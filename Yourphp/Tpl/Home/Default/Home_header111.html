@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="{$seo_keywords}" />
+	<meta name="description" content="{$seo_description}" />
+	<meta name="Copyright" content="Copyright (c) 2008 yourphp.cn" />
+	<meta name="author" content="{$site_name}--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>{$seo_title}-{$site_name}</title>
+	<link href="__ROOT__/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="__PUBLIC__/Js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Js/responsiveslides.min.js"></script>
+	<script src="__PUBLIC__/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="../Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="../Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+        	<div class="head_t" >phone:<span class="f14">0571-88967981 0571-88952137</span></div>
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<YP:nav  catid="32" level="3"  home="1" />
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '__APP__';
+var ROOT =	 '__ROOT__';
+var PUBLIC = '__PUBLIC__';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_{$bcid}');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+<YP:flash flashid="1" />

@@ -1,0 +1,113 @@
+<include file="Home:header"/>
+{__NOLAYOUT__}
+<div id="banner">
+	            <!------------------------------------- THE CONTENT ------------------------------------------------->
+				<!-- 代码 开始 -->
+    <div class="slide_container">
+      <ul class="rslides" id="slider">
+        <li>
+          <img src="/Yourphp/Tpl/Home/Default/Public/images/1.jpg" alt="">
+          <p class="caption">恒温恒湿机主要为电子零部件、工业材料、成品在研发、生产和检验各环节的试验提供恒定湿热、复杂高低温交变等试验环境和试验条件，适用于电子电器、通讯、化工、五金、橡胶、玩具等各行业</p>
+        </li>
+        <li>
+          <img src="/Yourphp/Tpl/Home/Default/Public/images/2.jpg" alt="">
+          <p class="caption">采用累计工作时间及手动换风功能，不锈钢水箱，防腐、防菌、耐用具有通风模式， 循环室内空气，加湿后空气不带钙镁离子</p>
+        </li>
+        <li>
+          <img src="/Yourphp/Tpl/Home/Default/Public/images/3.jpg" alt="">
+          <p class="caption">除湿机的普及，可以确保居室内有一个舒适干燥的生活环境，由于吊顶除湿机产品薄而精巧，吊装在天花板上，不占地面空间，因此近年来，部分别墅等高档住宅逐渐使用吊顶除湿机</p>
+        </li>
+      </ul>
+    </div>
+<!-- 代码 结束 -->
+                <!----------------- --------------------->
+                </div>
+    </div>
+<div class="main">
+        <div class="pro_box">
+        	<ul class='pro_box_1'><li ><a href="product.html"><span class='ff b f14'>冷冻除湿机</span><br />具有省时、省电，国际名牌压缩机</a></li></ul>
+			<ul class='pro_box_2'><li ><a href="product1.html"><span class='ff b f14'>非标除湿机</span><br />整机体积小，重量轻，能耗低，效率高</a></li></ul>
+			<ul class='pro_box_3'><li ><a href="product2.html"><span class='ff b f14'>转轮除湿机</span><br />对湿度、温度、洁净度有综合要求的系统工程</a></li></ul>
+			<ul class='pro_box_4'><li ><a href="product3.html"><span class='ff b f14'>工业加湿机</span><br />安全的防溢水控制和自动报警功能</a></li></ul>
+			<ul class='pro_box_5'><li ><a href="product4.html"><span class='ff b f14'>工业净化设备</span><br />彻底杀灭空气中的病毒、细菌</a></li></ul>
+        </div>
+        <div class="tiaoz"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_18.jpg"/></div>
+        <div class="product">
+        	<div class="product_h"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_12.jpg"/> <img src="/Yourphp/Tpl/Home/Default/Public/images/index_19.jpg"/></div>
+            <div class="more"><a href="prouct.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_20.jpg"/></a></div>
+			
+			<div id="demo">
+			<div id="indemo">
+			<div id="demo1">
+            <div class="product_list">
+            	<ul><li><a href="p4.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p4.jpg'/ width='145' height='138'></a></li><li><a href="">DJ-201E</a></li></ul>
+				<ul><li><a href="p15.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p15.jpg'/ width='145' height='138'></a></li><li><a href="">DJDD-901E|DJDD-1301E</a></li></ul>
+				<ul><li><a href="p25.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p25.jpg'/ width='145' height='138'></a></li><li><a href="">DJFT-4881E|DJFT7281E</a></li></ul>
+				<ul><li><a href="p28.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p28.jpg'/ width='145' height='138'></a></li><li><a href="">DJGD-1681E</a></li></ul>
+				<ul><li><a href="p46.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p46.jpg'/ width='145' height='138'></a></li><li><a href="">DJHF53|DJHF62</a></li></ul>
+				<ul><li><a href="p65.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/p65.jpg'/ width='145' height='138'></a></li><li><a href="">DJ-15|DJ-18</a></li></ul>
+            </div>
+			</div>
+			<div id="demo2"></div>
+			</div>
+			</div>
+			
+        </div>
+        <div class="tiaoz"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_18.jpg"/></div>
+        <div class="box">
+        	<div class="news">
+                <div style="float:left"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_12.jpg"/> <img src="/Yourphp/Tpl/Home/Default/Public/images/index_22.jpg"/></div>
+                <div class="more"><a href="new.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_20.jpg"/></a></div>
+                <div class='news1'>
+				<ul class='news1_p'><a href="new.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/t5.jpg'/ width='141' height='100' alt=''></a></ul>
+				<ul class='news1_p2'>
+				<li class='b'><a href="ns1.html">除湿机功能好，多雨时节备受...</a></li>
+				<li>在南边遇到梅雨气候，给大家带来的直接的感光就是空气的湿润。这也在很大的程度上使...</li>
+				</ul>
+				
+				</div>
+				<div class='news2'>
+				<ul>
+					<li><span><a href="ns7.html">除湿机如何使用注意的问题...</a></span>2014-5-23</li>
+					<li><span><a href="ns13.html">抽湿机压缩机不工作如何处理？...</a></span>2014-5-23</li>
+				</ul>
+				</div>
+            </div>
+            <div class="scheme">
+                <div style="float:left"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_12.jpg"/> <img src="/Yourphp/Tpl/Home/Default/Public/images/index_23.jpg"/></div>
+                <div class="more" style="padding-right:15px;"><a href="advantage.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_20.jpg"/></a></div>
+                <div class="scheme_k">
+                	<ul>
+						<li><a href="s1.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/t6.jpg'/ width='140' height='72'></a></li>
+						<li><span class='b'><a href="s1.html">工业类加湿机使用注意...</a></span><br />工业上的使空气的湿润的超声波技术，目前已经非常普遍地应用在各个地方了...</li>
+					</ul>
+					<ul>
+						<li><a href="s10.html"><img src='/Yourphp/Tpl/Home/Default/Public/images/t7.jpg'/ width='140' height='72'></a></li>
+						<li><span class='b'><a href="s10.html">机房除湿加湿一体机的...</a></span><br />机房除湿加湿一体机的使用场所主要是机房里，通信机房、交换机房、网络机房...</li>
+					</ul>
+                </div>
+            </div>
+            <div class="contact">
+                <div style="float:left"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_12.jpg"/> <img src="/Yourphp/Tpl/Home/Default/Public/images/index_24.jpg"/></div>
+				<div class="more" style="padding-right:15px;"><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_20.jpg"/></a></div>
+                 <div class="contact_p">
+                	<ul>
+                	  <a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_25.jpg"/></a>
+   	                </ul>
+                    <ul style=" padding-top:7px; line-height:20px; text-indent:24px; width:230px;">
+                      <a href="about.html">杭州舒逸电器有限公司是一家专业生产家用除湿机,商用除湿机,工业除湿机,电力工具柜专用除湿机,吊顶除湿机,转轮除湿机,湿膜加湿机,超声波加湿机,文件档案消毒柜...</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tiaoz"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_18.jpg"/></div>
+        
+<div class="links">
+  <div style="float:left"><img src="/Yourphp/Tpl/Home/Default/Public/images/index_12.jpg"/><img src="/Yourphp/Tpl/Home/Default/Public/images/index_30.jpg"/></div>
+	<div class="links_k">
+   	 <a href="#" title=''>東井除湿机</a> | <a href="#" title=''>東井加湿机</a>
+   	</div>
+</div>
+    </div>
+</div>
+<include file="Home:footer"/>

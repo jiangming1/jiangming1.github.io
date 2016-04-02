@@ -1,0 +1,64 @@
+/*-----首页a链接样式---------*/
+
+a { color: #1481c0; text-decoration: none; line-height: inherit; font-weight: inherit; }
+a:hover ,.s-news li a:hover,.items-cotent ul li a:hover,.tj-list li a:hover ,.items-cotent h3 a:hover,.strategy-list li a:hover ,.help dl dd a:hover,.news_list li a:hover ,.globle li a:hover ,.help_left li a:hover ,.member-left dd a:hover,.gl-tag li a:hover,.gl-tag p a:hover,.yindao li a:hover{ color: #00649e; text-decoration: underline; }
+.help_left li a:hover ,.member-left dd a:hover{ text-decoration:none;}
+
+/*------产品列表样式-----------*/
+
+.handlebox,.strategy-list{ background:#f8fbff; }
+
+
+/*------产品详情样式-----------*/
+
+.pro_info .pro_tab { border-bottom:solid 3px #1a65a5;}
+.pro_info .pro_tab li { background:url(http://develop.boktour.com/website/skin/blue/detail-tab-blue.gif) 0 0 repeat-x;}
+.pro_info .pro_tab li.cur { background:url(http://develop.boktour.com/website/skin/blue/detail-tab-blue.gif) 0 -30px repeat-x; border-bottom:solid 1px #1a65a5;}
+
+
+/*----------弹出框样式---------------*/
+
+.user-form,.mt-dialog { border: 1px solid #00649e;}
+.user-form h3 ,.mt-dialog h3{background-color:#1481c0;}
+
+/*---------- 公共资讯样式---------------*/
+.globle h2 { background:#1481c0;}
+
+/*---------- 帮助中心左侧标题样式---------------*/
+.help_left h2 { background:#3d86c4;}
+.help_left li a:hover ,.help_left li.cur a ,.member-left dd a:hover { background:#dbe7f6; }
+
+.show a:hover,.show .cur a{ background:#b7b7b7;}
+
+/*---------- 帮助中心左侧标题样式---------------*/
+
+.third_menu a.cur{ background:#1481c0; border: solid 1px #1481c0; border-bottom:none;}
+
+/*----------------弹出日历样式-------------------*/
+.DateBorder .data-time th.sun { background:#00649e;}
+
+/*----------------产品详细页日历样式-------------------*/
+.c-day thead th{ background:#00649e;}
+
+/*----------------登录样式-------------------*/
+
+.head-section ul li.current { background:#3c91c3;}
+.head-section { border-bottom: 1px solid #1a7ab2;}
+
+/*----------------二级页面搜索样式-------------------*/
+
+.listbrand dl dd a.cur,.listbrand dl dd a:hover { background-color:#1481c0; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+
+/*----------------页码样式-------------------*/
+
+div.sabrosus a:hover {background-color:#f1f8ff; border: #a8c3e8 1px solid;}
+div.sabrosus span.current {border:#00649e 1px solid; background-color: #1481c0;}
+
+/*-----------------------tripinfo style & bookinfo style--------------------------*/
+
+.conformtrip li b{color:#1481c0;}
+.tpinfo_cont .user-table table .Green{color:#1481c0;}
+.chosecfdi .chufa a.selected{ background-color:#1481c0;border:1px #09669c solid;}
+
+.conformtrip li.selected{background-color:#e2f4fe;}
+.chosecfdi .chufa a{ background-color:#f3fafe;border:1px #e1f0f9 solid;}

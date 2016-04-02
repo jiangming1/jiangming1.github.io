@@ -1,0 +1,184 @@
+.topbar { width:100%; height:30px; background:#f7f7f7; border-bottom:solid 1px #ddd; }
+.subtopbar { width:1000px; margin:0 auto;}
+.subtopbar a { color:#5d5d5d;}
+.add_fav { text-align:left;}
+.add_fav a{ width:auto; background:url(http://develop.boktour.com/website/images/star.gif) left center no-repeat; text-indent:20px; float:left; line-height:30px; display:inline-block;}
+.top_sust span.sp { height:12px; width:1px; margin:9px 0; border-left:solid 1px #ddd;  line-height:30px;}
+
+.header,.footer,.wrap { width:1000px; margin:0 auto;}
+
+/*头部导航样式*/
+
+.cotent { width:1000px; margin:15px auto;}
+.aside { width:260px;}
+.main { width:720px;}
+
+/*左侧公告样式*/
+
+.announce{ padding:15px 10px; padding-bottom:0; border:1px #ddd solid; margin-bottom:15px;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}
+.announce h2{ font-size:14px; border-bottom:1px #ddd solid; height:16px; padding-bottom:3px;  margin-bottom:5px;}
+.announce h2 span{ font-weight:bold; background:url(http://develop.boktour.com/website/images/notice.png) no-repeat 0px center; padding-left:24px;}
+/*.announce h2 a{}*/
+.announce .content{ padding-bottom:5px;}
+.announce .content li{ line-height:24px;}
+.announce .content li a{ background:url(http://develop.boktour.com/website/images/list.gif) no-repeat; padding-left:11px; color:#5d5d5d;font-size:12px; background-position:left center;}
+
+/*目的地指南*/
+
+
+/*左侧广告样式*/
+
+.banner { width:260px; overflow:hidden;}
+.banner a { width:260px; display:block;}
+
+/*--------最新订单样式-------------*/
+
+.latest_order li { width:198px; margin:5px auto; border-bottom:dotted 1px #ddd; padding-bottom:5px;}
+.latest_order li p { line-height:18px; margin:0;}
+.latest_order li a { display:block; height:24px; line-height:24px; width:172px; overflow:hidden;text-overflow: ellipsis; white-space:nowrap; padding-left:26px;background:url(http://develop.boktour.com/website/images/new_ico.gif) left center no-repeat;}
+
+/*微博、微信样式*/
+
+.social { width:238px; border:solid 1px #ddd; border-top:none; padding:15px 10px; background:url(http://develop.boktour.com/website/images/weibo_bg.gif) left top repeat-x; color:#5a5a5a;}
+.social h5 { height:18px; line-height:18px; margin-bottom:10px; text-indent:25px; font-size:14px;font-family:"Microsoft Yahei"; font-weight:bold;}
+.social .weibo { border-bottom:dotted 1px #ddd; padding-bottom:15px;}
+.social .weibo h5 { background:url(http://develop.boktour.com/website/images/weibo.gif) left center no-repeat;}
+.social .weixin h5 { background:url(http://develop.boktour.com/website/images/weixin.gif) left center no-repeat;}
+.social .weibo p { line-height:20px;}
+.social .weibo dt{ width:85px; height:85px; border:solid 1px #ddd; padding:2px; float:left; }
+.social .weibo dd { width:143px; height:56px; float:right;}
+.social .weibo dd .focus { width:67px; height:26px; line-height:26px; background:url(http://develop.boktour.com/website/images/guanzhu.gif) no-repeat; text-align:center; color:#fff; display:block;}
+.social .weixin dt { width:85px; height:85px; padding:2px; border:solid 1px #ddd; float:left;}
+.social .weixin dd { width:143px; float:right; line-height:18px;}
+
+/*右侧banner样式*/
+
+.section { width:720px; margin-bottom:15px;}
+
+.flash{ width:720px; height:294px; margin:0px auto;}
+#slide{position:relative;float:left;width:720px;height:294px;margin-bottom:20px;overflow:hidden;background:url(http://develop.boktour.com/website/images/loading.gif) no-repeat center;}
+#slide ul{position:absolute;}
+#slide li{float:left; width:720px; height:294px; overflow:hidden; }
+#slide .o-control{display:none;position:absolute;top:120px;width:40px;height:60px;background:#000;filter:alpha(opacity=30);opacity:0.3;cursor:pointer;}
+#slide .control{position:relative;top:5px;left:8px;display:inline-block;width:30px;height:55px;background:url(http://develop.boktour.com/website/images/bg_index.png);filter:alpha(opacity=60);opacity:0.6;}
+#slide #goback{left:0px;}
+#goback .control{background-position:0px -35px;}
+#slide #forward{right:0px;}
+#forward .control{left:10px;background-position:-35px -35px;}
+#slide div{position:absolute; float:right; bottom:5px; right:5px; height:24px; overflow:hidden; zoom:1; }
+#slide span{width:24px;font-size:12px;height:24px;margin:2px 2px; background:#963;float:left;text-align:center;line-height:24px;cursor:pointer;font-family:arial;filter:alpha(opacity=70);opacity:0.7; }
+#slide span a{color:#fff;text-decoration:none;display:block; line-height:24px;}
+#slide span.curr,#slide span.hover{background:#000;}
+#slide .curr a:link, #slide .curr a:visited{color:#fff;}
+
+/*标题样式*/
+
+h2 span.title,h3 span.title,h4 span.title {font-size:14px; font-weight:bold; float:left;}
+
+/*价格样式*/
+
+span.price {line-height:24px;}
+span.price i { font-size:14px; color:#d55f10; padding-right:3px; display:inline-block;}
+
+/*公告样式*/
+
+.s-notice { width:683px; height:32px; padding-left:35px; border:solid 1px #ddd; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;background:url(http://develop.boktour.com/website/images/notice.png) no-repeat 5px center; overflow:hidden; margin-bottom:20px; position:relative;}
+.s-notice ul li { height:36px; line-height:32px; width:600px;}
+.s-notice ul li a { color:#999;}
+.s-notice a.more { position:absolute; right:10px; top:0; line-height:32px; color:#999;}
+
+/*-----------------
+.s-news { width:218px; height:248px; border:solid 1px #ddd; padding:10px;}
+.s-news h2 { height:24px; width:218px; line-height:24px; margin-bottom:5px;}
+.s-news h2 a { line-height:24px;}
+.s-news li { width:218px; height:26px; overflow:hidden; border-bottom:dotted 1px #ddd;}
+.s-news li a { width:218px; height:26px;  line-height:26px; overflow:hidden; color:#5d5d5d;}
+.s-news dl { width:218px; height:110px;}
+.s-news dl dt { height:24px; width:218px; }
+.s-news dl dt a { line-height:24px; width:218px; overflow:hidden; display:inline-block;}
+.s-news dl dd img { width:218px; height:76px; margin:0; }
+----------------*/
+
+/*推荐模块样式*/
+
+.tj-cotent { width:720px; height:195px;}
+.tj-cotent .tj-main { width:280px; height:195px; float:left;}
+.top1 { position:relative;}
+.top1 p { position:absolute; left:0; top:155px; height:40px; width:280px; background:#000; filter:alpha(opacity=50);opacity:0.5;}
+.top1 .top-ico { width:57px; height:44px; position:absolute; right:0; top:151px;}
+.top1 #tm { color:#fff; padding-right:55px; display:block; position:absolute; left:5px; top:158px; line-height:16px;}
+.top1 #tm span { font-size:15px; color:#FC0;}
+
+.tj-list { width:420px; height:195px; float:right;}
+.tj-list li { height:16px; line-height:16px; margin:10px 0; *margin:7px 0; _margin:7px 0; overflow:hidden;}
+.tj-list li a { color:#5d5d5d; float:left; width:330px; height:16px; overflow:hidden; line-height:16px; display:inline-block; text-indent:20px;text-overflow: ellipsis; white-space:nowrap;}
+.tj-list li a { color:#5d5d5d; float:left; width:340px; height:16px; overflow:hidden; line-height:16px; display:inline-block; text-indent:20px;text-overflow: ellipsis;white-space: nowrap;}
+.tj-list li span { line-height:16px; padding:0; margin:0;}
+.tj-list li.top2 { background-position:0 0; margin-top:0;}
+.tj-list li.top3 { background-position:0 -16px;}
+.tj-list li.top4 { background-position:0 -32px;}
+.tj-list li.top5 { background-position:0 -48px;}
+.tj-list li.top6 { background-position:0 -64px;}
+.tj-list li.top7 { background-position:0 -80px;}
+.tj-list li.top8 { background-position:0 -96px;}
+.tj-list li.top9 { background-position:0 -112px; margin-bottom:0;}
+
+/*旅游区块样式*/
+
+/*.pro-items { width:720px;}
+.items-cotent { width:350px;}
+.items-cotent h3 { height:30px; height:36px; line-height:36px;}
+.items-cotent h3 a { width:62px; height:36px; display:inline-block; float:right; color:#5d5d5d; line-height:30px;}*/
+
+.items-cotent .items-photo { width:350px; height:102px; margin-bottom:10px;}
+.items-cotent .items-photo p { width:170px; height:102px; display:inline-block; overflow:hidden; position:relative;}
+.items-cotent .items-photo p span { position:absolute; left:0; bottom:0; height:26px; line-height:26px; width:100%; display:inline-block; background:#000; color:#fff; text-indent:5px;filter:alpha(opacity=70);opacity:0.7; text-align:center;}
+.items-cotent ul li { width:350px; height:26px; overflow:hidden; border-bottom: 1px solid #F1F1F1;}
+.items-cotent ul li a { display:inline-block; float:left; width:250px; height:26px; line-height:26px; overflow:hidden; color:#5d5d5d; text-overflow: ellipsis; white-space:nowrap; padding-left:10px;background:url(http://develop.boktour.com/website/images/item-li.gif) left center no-repeat;}
+
+/*--------攻略样式---------------*/
+
+.strategy { height:222px; margin:15px 0 25px 0; *margin-bottom:10px; _margin-bottom:10px;}
+.strategy-img { width:495px; height:222px;}
+.strategy-img p.gl { position:relative;}
+.strategy-img p.gl span { position:absolute; left:0; bottom:0px; height:24px; line-height:24px; width:100%; display:inline-block; background:#000; color:#fff; text-indent:5px;filter:alpha(opacity=70);opacity:0.7;}
+.strategy-list { width:185px; height:200px; padding:10px; border:solid 1px #ddd; }
+.strategy-list h4 { height:18px; line-height:18px; margin-bottom:10px;}
+.strategy-list h4 a { line-height:18px;}
+.strategy-list li { width:185px; height:24px;}
+.strategy-list li a { color:#5d5d5d; width:185px; height:24px; line-height:24px; overflow:hidden; display:inline-block;}
+
+/*---------------底部样式----------------*/
+
+.help { width:1000px; border-top:solid 1px #ddd; border-bottom: 1px solid #F1F1F1; margin:0 auto; padding:20px 0;}
+.help dl { width:200px; float:left; margin-top:5px;}
+.help dl dt { width:160px; height:24px; margin-bottom:5px; font-size:18px; font-family: "Microsoft Yahei"; position:relative; padding:6px 0 6px 40px; }
+.help dl dt b { position:absolute; left:0; top:6px; height:34px; width:34px; background:url(http://develop.boktour.com/website/images/help_ico.png) no-repeat;}
+.help dl dt b.fore1 { background-position:0 0;}
+.help dl dt b.fore2 { background-position:0 -34px;}
+.help dl dt b.fore3 { background-position:0 -68px;}
+.help dl dt b.fore4 { background-position:0 -102px;}
+.help dl dt b.fore5 { background-position:0 -136px;}
+.help dl dd { line-height:22px; height:22px; width:160px; font-size:12px; display:block; float:left;padding-left:40px; }
+.help dl dd a { color:#999;}
+.help dl.h-ico1 { background-position:0 0;}
+
+.links { width:1000px; line-height:20px; text-align:center; color:#5a5a5a}
+.links a { color:#5a5a5a; padding:0 8px;}
+.copyright { text-align:center; line-height:22px; color:#5a5a5a;}
+.weblinks { border-top:solid 1px #f1f1f1; padding:10px 0;}
+.weblinks p { width:60px; float:left;}
+.weblinks span { width:900px; float:right;}
+.weblinks span a { padding-right:10px; color:#888;}
+
+
+
+
+
+
+
+
+
+
+
+

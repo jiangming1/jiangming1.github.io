@@ -1,0 +1,16 @@
+
+<div class="ny_right right">
+				<div class="title_wz"><h1>产品展示</h1><span style="float:right">{:L(catpos)} <a href="{:URL()}">{:L(home_font)}</a> &gt <YP:catpos  catid="catid" space=" &gt; " /></span></div>
+				<div class="about">
+				<ul id="shop-list">
+			<volist name="list" id="vo" key="k">
+			<li><a href="{$vo.url}"  class="pc1" onMouseOver="this.className='pc2'" onMouseOut="this.className='pc1'" target="_blank">
+				<img src="{$vo.thumb}" alt="">
+			<h4>{$vo.title}</h4></a>
+			</li>
+			</volist>
+			    </ul>
+				</div>
+				
+				<div id="pages" class="page">{$pages}</div>
+</div>

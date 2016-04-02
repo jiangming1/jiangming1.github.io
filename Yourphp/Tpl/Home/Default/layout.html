@@ -1,0 +1,34 @@
+﻿<include file="Home:header"/>
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		{__CONTENT__}
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <YP:subcat  catid="32">
+		<li{if $r[id]==$bcid} class="hover"{/if}><a href="{$r.url}">{$r.catname}</a></li>
+		{if $r['child']==1} <ul><YP:subcat  catid="$r[id]" id="res"><li><a href="{$res.url}">{$res.catname}</a></li></YP:subcat></ul>{/if}
+		    </YP:subcat>
+				</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<YP:list name="Article" order="id desc" catid="35" limit="10">
+			<a href="{$r.url}" target="_blank">{$r[title]|str_cut=###,35}</a><p>
+		</YP:list> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<include file="Home:footer"/>
+

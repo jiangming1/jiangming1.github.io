@@ -1,0 +1,39 @@
+
+<div class="titlec">
+<p>{:L('tit_msg')}</p>
+</div>
+
+      
+<p>{:L('current_version')} {$var} &nbsp;&nbsp;{:L('uptime')}{:UPDATETIME}</p>
+{if $patchlist}
+<form name="myform" id="myform" action="{:U($module_name.'/index?do=1')}" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+      		<tr>
+			<th width="340" align="left">{:L('upgrade_var_list')}</th>
+			<th width="110" align="left">{:L('uptime')}</th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		<volist name="patchlist" id="vo" key="k">
+      		<tr>
+      		 
+			<td align="left">{$vo['file']}</td>
+      		<td align="left">{$vo['filemtime']}</td>
+      		 	
+      		</tr>
+      		</volist>
+      	</tbody>
+    </table>
+  
+    <div class="btn">
+	<font color="red">{:L('cover_html_file')}</font></label><input type="hidden" name="menuid" value="{$menuid}"><input name="cover" id="cover" type="checkbox" value=1>
+	<input type="button" class="button"  name="" value="{:L('start_upgrade')}" onclick="$('#myform').submit();">
+	</div>
+	</div>
+</div>
+</form>
+{else}
+<div class="titlec"><font color="red">{:L('latest_version')}</font></div>
+{/if}

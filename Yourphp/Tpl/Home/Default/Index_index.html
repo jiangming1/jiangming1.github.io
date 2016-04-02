@@ -1,0 +1,14 @@
+
+<div class="ny_right right">
+		<div class="title_wz"><h1>蒋神的运维博客</h1><span style="float:right">{:L(catpos)} <a href="{:URL()}">{:L(home_font)}</a> &gt <YP:catpos  catid="catid" space=" &gt; " /></span></div>
+		<div class="about">
+		<img src="/Yourphp/Tpl/Home/Default/Public/images/new.jpg" />
+		<ul id="new3">
+			<volist name="list" id="r">
+					<li><a href="{$r.url}" target="_blank">{$r.title}</a>[{$r.createtime|toDate=###,'Y-m-d'}]</li>
+			</volist> 
+		</ul>
+		</div>
+
+		<div id="pages" class="page">{$pages}</div>
+</div>

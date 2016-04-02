@@ -1,0 +1,14 @@
+<include file="Home:header"/>
+{__NOLAYOUT__}
+<div class="pos"><b></b><span>{:L(catpos)} <a href="{:URL()}">{:L(home_font)}</a> &gt 网站地图  &gt</span></div>
+<div class="mapbox">
+		
+		<YP:subcat catid="0" id="cid" key="ii">				 
+				<h4 class="tit"><b><a href="{$cid['url']}">{$cid['catname']}</a></b></h4>
+				<div class="smallcat"><ul class="txt">
+				<YP:subcat catid="$ii" id="r" key="i"><li><a href="{$r['url']}">{$r['catname']}</a>|</li></YP:subcat>
+				</ul></div>
+		</YP:subcat>
+		<br>
+</div>
+<include file="Home:footer"/>

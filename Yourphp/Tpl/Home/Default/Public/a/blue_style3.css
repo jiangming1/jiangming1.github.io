@@ -1,0 +1,74 @@
+/*-----导航颜色背景---------*/
+
+.nav { width:1000px; margin:0 auto; height:44px; background:url(http://develop.boktour.com/website/skin/blue/blue_nav_bg3.gif) no-repeat;}
+.nav ul.navitems { width:800px; height:44px; padding-left:10px;}
+.nav .navitems li { height:44px; float:left; text-align:center; width:auto;}
+.nav .navitems li a { text-align: center; float:left; width:96px; line-height:44px; font-size:14px; text-decoration: none; color:#5d5d5d; font-family: "Microsoft Yahei"; display:inline-block; margin-right:1px;}
+.nav .navitems li a:hover ,.nav .navitems li a.cur { color:#fff; font-weight:bold; background:url(http://develop.boktour.com/website/skin/blue/blue_nav_cur3.gif) no-repeat;}
+
+.sub_nav { width:160px; height:40px; text-align:right;}
+.sub_nav a { line-height:40px; padding:0 10px; color:#5d5d5d;}
+.sub_nav a:hover { color:#68106b;}
+
+/*-----左侧搜索框样式---------*/
+
+.search { width:258px; border:solid 1px #ddd; padding-bottom:5px;}
+.search h2 {height:40px; background:url(http://develop.boktour.com/website/skin/blue/blue_th_bg3.png) left bottom repeat-x; margin-bottom:15px;}
+.search h2 a { width:60px; height:40px; display:block; float:left; padding-left:5px; font-size:14px; line-height:40px; color:#5d5d5d;}
+.search h2 a.cur { height:30px; color:#1481c0; font-weight:bold; background:#fff; }
+
+.search_cotent li { width:240px; margin:5px auto;}
+.search_cotent li .lable { width:236px; height:24px; line-height:24px; padding-right:10px; text-align:left; float:left; display:block; margin:0; }
+.search_cotent li .input-small { width:226px; height:20px;}
+
+.search-btn { background:url(http://develop.boktour.com/website/images/search-btn-xl.png) no-repeat; width:236px; height:35px; line-height:35px; color:#fff; font-size:14px; display:inline-block; text-align:center;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);_padding-top:10px;_height:25px;}
+.search-btn:hover { text-decoration:none; color:#fff;  background:url(http://develop.boktour.com/website/images/search-btn-hover-xl.png) no-repeat;}
+.search-btn { background-position:0 -140px;}
+.search-btn:hover { background-position:0 -140px;}
+
+/*-----目的地导航样式---------*/
+
+.city-nav { width:258px; border:solid 1px #ddd; padding-top:5px;}
+.city-nav h2 { height:34px; _line-height:14px; background:url(http://develop.boktour.com/website/skin/blue/blue_th_bg3.png) left bottom repeat-x; margin-bottom:15px;}
+.city-nav h2 span { padding-bottom:4px; line-height:30px; color:#1481c0; padding-left:10px; font-size:14px; font-weight:bold;}
+
+.nav-cotent { width:238px; margin:0 auto; padding:10px 0;}
+.city-nav h3 { font-size:14px; font-weight:bold; line-height:28px; border-bottom:dotted 1px #ddd; height:28px; width:238px;}
+.nav-cotent p a { padding:4px 5px; height:12px; line-height:12px; margin:4px 5px; float:left; -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px; color:#5d5d5d; white-space:nowrap;}
+.nav-cotent p a ,.gl-tag p a { border:solid 1px #a8c3e8; background:#f1f8ff; }
+
+/*--------最新订单样式-------------*/
+
+.latest_order {width:258px; border:solid 1px #ddd; border-top:none;}
+.latest_order h3 {background:#c41818; height:36px; line-height:36px; color:#fff; text-indent:10px; font-size:15px; font-weight:bold;}
+
+/*-----推荐模块样式---------*/
+
+/*.tj-area .tab { width:720px; height:36px; margin-bottom:15px; border:solid 1px #ddd; border-bottom-width:3px; border-bottom-colar:#ccc;}
+.tj-area .tab a { height:20px; line-height:20px; margin:8px 0; border-right:solid 1px #ddd; padding-right:15px; float:left; margin-right:3px; font: normal 15px "微软雅黑", "宋体", Tahoma, Geneva, sans-serif; color:#5a5a5a; margin-left:15px;}
+.tj-area .tab a.tab03 { border:none;}
+.tj-area .tab a.cur {font: bold 15px "微软雅黑", "宋体", Tahoma, Geneva, sans-serif; color:#c41818; }
+.tj-area .tab a:hover { text-decoration:none;}*/
+
+.tj-area .tab { width:720px; height:36px; margin-bottom:15px; border-bottom:solid 1px #ddd;}
+.tj-area .tab a { height:35px; display:block; background:#f1f8ff; padding:0 15px; float:left; font: normal 15px/35px "微软雅黑", "宋体", Tahoma, Geneva, sans-serif; color:#5a5a5a; margin-left:15px; border:solid 1px #ddd; -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+.tj-area .tab a.cur {font: bold 15px/36px "微软雅黑", "宋体", Tahoma, Geneva, sans-serif; color:#1481c0; background:#fff; border:solid 1px #ddd;  border-bottom:solid 1px #fff; -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+.tj-area .tab a:hover { text-decoration:none;}
+
+.tj-list li { background:url(http://develop.boktour.com/website/skin/red/number_red.gif) no-repeat; }
+
+/*------旅游区块样式-----------*/
+
+.pro-items { width:720px;}
+.items-cotent { width:350px;}
+
+/*.items-cotent h3 { height:26px; line-height:26px; border-bottom:solid 3px #c41818; margin-bottom:15px;}
+.items-cotent h3 span { display:inline-block; line-height:26px; color:#c41818;}
+.items-cotent h3 a { height:26px; display:inline-block; float:right; color:#fff; line-height:26px; padding-right:10px; background:#c41818; padding:0 10px;}
+.items-cotent h3 a:hover { color:#fff; text-decoration:underline;}
+*/
+.items-cotent h3 { height:34px; background:url(http://develop.boktour.com/website/skin/blue/blue_th_bg3.png) left bottom repeat-x; margin-bottom:15px;}
+.items-cotent h3 span { display:inline-block; height:24px; padding-bottom:10px; line-height:24px; color:#5d5d5d;}
+.items-cotent h3 a {display:inline-block; float:right; background:url(http://develop.boktour.com/website/skin/blue/blue_th_more3.png) no-repeat; width:47px; height:20px; margin-bottom:5px; text-indent:-9999px;}
+.items-cotent h3 a:hover { color:#fff; text-decoration:underline;}
+

@@ -1,0 +1,32 @@
+
+<form action="{:U($module_name.'/do'.$action_name.'?')}" method="GET" > 
+  <input type="hidden" name="g" value="Admin"> 
+  <input type="hidden" name="m" value="{$module_name}"> 
+  <input type="hidden" name="a" value="do{$action_name}">
+  <input type="hidden" name="iscreatehtml" value="1">
+	<div id="infobox" > 
+	{:L('sitemap_info')}
+	</div>
+	<table cellpadding=0 cellspacing=0 width="100%" class="table_form" > 
+	<tr>
+		<th style="width:140px;">{:L(MODULE_NUMBER)}：</th>
+		<td><volist name="module" id="r"> {$r.title}:<input type="text" name="{$r.name}" size="2" value="50">{:L(PAGE_ITEM)}, &nbsp;&nbsp;</volist></td>
+	</tr>
+
+	<tr>
+		<th style="width:140px;">{:L('YES_NO_CREATE')}{:L('HTML_SITEMAP')}：</th>
+		<td>{:Form::radio(array('field'=>'htmlmap','options'=>$yesorno),$htmlmap)} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="{$siteurl}/sitemap.html">{:L('GOTO')}{:L('HTML_SITEMAP')}</a>  </td>
+	</tr>
+	 
+	 <tr>
+		<th>{:L('YES_NO_CREATE')}{:L('XML_SITEMAP')}：</th>
+		<td>{:Form::radio(array('field'=>'xmlmap','options'=>$yesorno),$xmlmap)}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="{$siteurl}/sitemap.xml">{:L('GOTO')}{:L('XML_SITEMAP')}</a></td>
+	</tr>
+	 
+	</table>
+	<div class="btn">
+	<INPUT TYPE="submit"  value="{:L('Createsitemap')}" class="button" >
+	</div>
+</form>
+ 
+</div>

@@ -1,0 +1,15 @@
+<include file="Home:header"/>
+{__NOLAYOUT__}
+ <load href="../Public/images/order/order.css"/>
+ 
+		<div class="pos">{:L(catpos)} <a href="{:URL()}">{:L(home_font)}</a> &gt <YP:catpos  catid="catid" space=" &gt " /></div>
+     		<div id="cart_box">
+				<div class="order_ok_message">
+						{if $paybutton}{:L('click_button_to_pay')}<br>
+						{$paybutton}<br>{/if}
+						{:L('ORDER_DOSUBMIT_OK_WAIT')}<br>
+						{:L('ORDER_SN')}:{$order['sn']}<br>
+				</div>
+				<div class="c"></div>
+			</DIV>
+<include file="Home:footer"/>

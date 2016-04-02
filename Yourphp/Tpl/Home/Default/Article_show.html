@@ -1,0 +1,17 @@
+
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>{:L(catpos)} <a href="{:URL()}">{:L(home_font)}</a> &gt <YP:catpos  catid="catid" space=" &gt; " /></span></div>
+	<div class="about">
+	<h1>{$title}</h1> 
+    <h3>{:L(time)}: {$createtime|toDate} &nbsp;&nbsp;&nbsp;&nbsp;{:L(copyfrom)}: {if  $copyfrom}{$copyfrom}{else}{$site_name}{/if}</h3>
+    <span class="content">{$content}</span>           
+	
+	<div id="pages" class="page">{$pages}</div>
+	{if $keywords}
+	<br><font color="red">{:L('KEYWORD')}:<yp:tags moduleid="moduleid" keywords="keywords"><a href="{:TAGURL($r)}">{$r.name}</a>&nbsp; </yp:tags>  </font>	
+	<br>{:L('RELATED_ARTICLES')}:
+	<br><yp:tags moduleid="2" keywords="keywords" list="1"><a href="{$r.url}">{$r.title}</a><br> </yp:tags> <br>
+	{/if}
+	</div>
+</div> 
+<script language="JavaScript" src="{:URL('Home-'.$module.'/hits?id='.$id)}"></script>
