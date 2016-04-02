@@ -1,0 +1,554 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="Android 实现监听短信(同时监听广播和数据库)代码如下：拦截广播package com.javen.sms.receiver;import java.text.SimpleDateFormat;import java.util.Date;import java.util.TimeZone;import com.javen.util.Inter..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>android实现监听短信的代码-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>android实现监听短信的代码</h1> 
+    <h3>时间: 2016-03-23 02:42:05 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content"><p style="font-size:13px;font-family:Verdana, Arial, Helvetica, sans-serif;">
+	Android 实现监听短信(同时监听广播和数据库)代码如下：
+</p>
+<ol style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;">
+	<ol>
+		<li>
+			<strong>拦截广播<br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>package com.javen.sms.receiver;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import com.javen.util.InterceptKeyKeeper;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.telephony.SmsMessage;
+import android.util.Log;
+import android.widget.Toast;
+
+public class SmsReceiver extends BroadcastReceiver {
+    private Context mContext;
+    public static final String SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+    public static final String SMS_DELIVER_ACTION = "android.provider.Telephony.SMS_DELIVER";
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        this.mContext=context;
+        Toast.makeText(context, "接收短信执行了.....", Toast.LENGTH_LONG).show();
+        Log.e("SMSReceiver, isOrderedBroadcast()=", isOrderedBroadcast()+"");
+        Log.e("SmsReceiver onReceive...", "接收短信执行了......");
+        String action = intent.getAction();
+        if (SMS_RECEIVED_ACTION.equals(action) || SMS_DELIVER_ACTION.equals(action)) {
+            Toast.makeText(context, "开始接收短信.....", Toast.LENGTH_LONG).show();
+            Log.e("SmsReceiver onReceive...", "开始接收短信.....");
+            
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                Object[] pdus = (Object[])bundle.get("pdus");  
+                if (pdus != null &amp;&amp; pdus.length &gt; 0) {  
+                    SmsMessage[] messages = new SmsMessage[pdus.length];  
+                    for (int i = 0; i &lt; pdus.length; i++) {  
+                        byte[] pdu = (byte[]) pdus[i];  
+                        messages[i] = SmsMessage.createFromPdu(pdu);  
+                    }  
+                    for (SmsMessage message : messages) {  
+                        String content = message.getMessageBody();// 得到短信内容  
+                        String sender = message.getOriginatingAddress();// 得到发信息的号码  
+                        if (content.contains(InterceptKeyKeeper.getInterceptKey(mContext))) {
+                            Toast.makeText(mContext, "内容为："+content, Toast.LENGTH_LONG).show();
+                            //setResultData(null);
+                            this.abortBroadcast();// 中止
+                        }else if (sender.equals("10010") || sender.equals("10086")) {
+                            Toast.makeText(mContext, "内容为："+content, Toast.LENGTH_LONG).show();
+                            this.abortBroadcast();// 中止
+                        }
+                        Date date = new Date(message.getTimestampMillis());  
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        format.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+                        String sendContent = format.format(date) + ":" + sender + "--" + content;  
+                        Log.e("SmsReceicer onReceive ",sendContent +" ");
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+<strong><br />
+</strong>
+		</li>
+		<li>
+			<strong>开启一个服务开监听数据库<br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>package com.javen.service;
+
+import android.app.Service;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.IBinder;
+import android.os.Process;
+import android.widget.Toast;
+
+/**
+ * @author Javen
+ * 开启一个服务开监听数据库
+ */
+public class SmsService extends Service {
+
+    private SmsObserver mObserver;
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        Toast.makeText(this, "SmsService 服务器启动了....", Toast.LENGTH_LONG).show();
+        // 在这里启动
+        ContentResolver resolver = getContentResolver();
+        mObserver = new SmsObserver(resolver, new SmsHandler(this));
+        resolver.registerContentObserver(Uri.parse("content://sms"), true,mObserver);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.getContentResolver().unregisterContentObserver(mObserver);
+        Process.killProcess(Process.myPid());
+    }
+}</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+<strong><br />
+</strong>
+		</li>
+		<li>
+			<strong><strong><strong>数据库观察者</strong></strong><br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>package com.javen.service;
+
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Message;
+import android.util.Log;
+
+/**
+ * @author Javen
+ * 数据库观察者
+ */
+public class SmsObserver extends ContentObserver {
+
+    private ContentResolver mResolver;
+    public SmsHandler smsHandler;
+
+    public SmsObserver(ContentResolver mResolver, SmsHandler handler) {
+        super(handler);
+        this.mResolver = mResolver;
+        this.smsHandler = handler;
+    }
+
+    @Override
+    public void onChange(boolean selfChange) {
+        Log.i("SmsObserver onChange ", "SmsObserver 短信有改变");
+        Cursor mCursor = mResolver.query(Uri.parse("content://sms/inbox"),
+                new String[] { "_id", "address", "read", "body", "thread_id" },
+                "read=?", new String[] { "0" }, "date desc");
+
+        if (mCursor == null) {
+            return;
+        } else {
+            while (mCursor.moveToNext()) {
+                SmsInfo _smsInfo = new SmsInfo();
+
+                int _inIndex = mCursor.getColumnIndex("_id");
+                if (_inIndex != -1) {
+                    _smsInfo._id = mCursor.getString(_inIndex);
+                }
+
+                int thread_idIndex = mCursor.getColumnIndex("thread_id");
+                if (thread_idIndex != -1) {
+                    _smsInfo.thread_id = mCursor.getString(thread_idIndex);
+                }
+
+                int addressIndex = mCursor.getColumnIndex("address");
+                if (addressIndex != -1) {
+                    _smsInfo.smsAddress = mCursor.getString(addressIndex);
+                }
+
+                int bodyIndex = mCursor.getColumnIndex("body");
+                if (bodyIndex != -1) {
+                    _smsInfo.smsBody = mCursor.getString(bodyIndex);
+                }
+
+                int readIndex = mCursor.getColumnIndex("read");
+                if (readIndex != -1) {
+                    _smsInfo.read = mCursor.getString(readIndex);
+                }
+                
+                // 根据你的拦截策略，判断是否不对短信进行操作;将短信设置为已读;将短信删除
+                // TODO
+                System.out.println("获取的短信内容为："+_smsInfo.toString());
+                Log.i("SmsObserver ...", "获取的短信内容为："+_smsInfo.toString());
+                Message msg = smsHandler.obtainMessage();
+                _smsInfo.action = 2;// 0不对短信进行操作;1将短信设置为已读;2将短信删除
+                msg.obj = _smsInfo;
+                smsHandler.sendMessage(msg);
+            }
+        }
+
+        if (mCursor != null) {
+            mCursor.close();
+            mCursor = null;
+        }
+    }
+}</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+<strong><br />
+</strong>
+		</li>
+		<li>
+			<strong>短信处理类<br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>package com.javen.service;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+
+/**
+ * @author Javen
+ * 
+ *         短信的处理
+ * 
+ */
+public class SmsHandler extends Handler {
+    private Context mcontext;
+
+    public SmsHandler(Context context) {
+        this.mcontext = context;
+    }
+
+    @Override
+    public void handleMessage(Message msg) {
+        SmsInfo smsInfo = (SmsInfo) msg.obj;
+
+        if (smsInfo.action == 1) {
+            ContentValues values = new ContentValues();
+            values.put("read", "1");
+            mcontext.getContentResolver().update(
+                    Uri.parse("content://sms/inbox"), values, "thread_id=?",
+                    new String[] { smsInfo.thread_id });
+        } else if (smsInfo.action == 2) {
+            Uri mUri = Uri.parse("content://sms/");
+            mcontext.getContentResolver().delete(mUri, "_id=?",
+                    new String[] { smsInfo._id });
+        }
+    }
+}</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+<strong><br />
+</strong>
+		</li>
+		<li>
+			<strong>SmsInfo 数据结构&nbsp;主要用于短信拦截<br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>package com.javen.service;
+
+/**
+ * 主要用于短信拦截
+ * 
+ * @author Javen
+ * 
+ */
+public class SmsInfo {
+    public String _id = "";
+    public String thread_id = "";
+    public String smsAddress = "";
+    public String smsBody = "";
+    public String read = "";
+    public int action = 0;// 1代表设置为已读，2表示删除短信
+    @Override
+    public String toString() {
+        return "SmsInfo [_id=" + _id + ", thread_id=" + thread_id
+                + ", smsAddress=" + smsAddress + ", smsBody=" + smsBody
+                + ", read=" + read + ", action=" + action + "]";
+    }
+    
+    
+}</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+<strong><br />
+</strong>
+		</li>
+		<li>
+			<strong>需要的权限以及配置信息<br />
+</strong>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+<pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.javen.sms"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" /&gt;
+    
+    &lt;uses-permission android:name="android.permission.SEND_SMS" /&gt; 
+     &lt;uses-permission android:name="android.permission.RECEIVE_SMS" /&gt;
+     
+     &lt;!-- &lt;uses-permission android:name="android.permission.BROADCAST_SMS" /&gt;
+     &lt;uses-permission android:name="android.permission.READ_SMS" /&gt;
+    &lt;uses-permission android:name="android.permission.WRITE_SMS" /&gt; --&gt;
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        
+         &lt;receiver
+            android:name="com.javen.sms.receiver.SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS"&gt;
+            &lt;intent-filter android:priority="2147483647" &gt;
+                &lt;action android:name="android.provider.Telephony.SMS_RECEIVED" /&gt;
+                &lt;action android:name="android.provider.Telephony.SMS_DELIVER" /&gt;
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt; 
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+        
+        &lt;service android:name="com.javen.service.SmsService"&gt;&lt;/service&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+				<div class="cnblogs_code_toolbar" style="margin:5px 0px 0px;padding:0px;">
+					<span class="cnblogs_code_copy"><a><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></span>
+				</div>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>测试在MainActivity 中启动</strong><strong>SmsService &nbsp;发送短信到10086 或者10010即可测试</strong>
+			</p>
+			<p>
+				<strong>&nbsp;</strong>
+			</p>
+			<div class="cnblogs_code" style="margin:5px 0px;padding:5px;background-color:#F5F5F5;border:1px solid #CCCCCC;font-family:'Courier New' !important;font-size:12px !important;">
+<pre>        intentService = new Intent(this, SmsService.class);
+        startService(intentService);
+        Toast.makeText(this, "启动service中.....", 1).show();
+    </pre>
+			</div>
+			<p>
+				&nbsp;
+			</p>
+			<p>
+				<br />
+以上就是Android 4.4以下暗扣原理。 &nbsp;&nbsp;Android 4.4以上如何实现大家可以在此博客中讨论交流。。。。。
+			</p>
+		</li>
+	</ol>
+</ol></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=49"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

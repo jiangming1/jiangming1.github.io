@@ -1,0 +1,216 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="原先搭建过一个自动化测试框架，迷迷糊糊不求甚解，算是搭建了一个仅限于能用的、根本算不上框架的玩意儿。现在回过头来好好看看究竟每一步是怎么联系起来的，是怎么运行起来的。本次博客先说说各部件都是干什么的。..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>jenkins 自动化测试框架-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>jenkins 自动化测试框架</h1> 
+    <h3>时间: 2016-03-21 15:49:05 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content">原先搭建过一个自动化测试框架，迷迷糊糊不求甚解，算是搭建了一个仅限于能用的、根本算不上框架的玩意儿。<br />
+<br />
+<br />
+现在回过头来好好看看究竟每一步是怎么联系起来的，是怎么运行起来的。<br />
+<br />
+<br />
+本次博客先说说各部件都是干什么的。<br />
+<br />
+<br />
+各部件简介：<br />
+<br />
+<br />
+　　jenkins：<br />
+<br />
+<br />
+　　　　提到jenkins就不能不提持续集成。jenkins是一个持续集成方面很好很成熟的开源软件，jenkins本身又是一个java的开源项目，提供了很多功能丰富的插件。<br />
+<br />
+<br />
+　　　　那到底持续集成是个什么东西？整这么多专业名词一点都不接地气。说说我的白话理解：<br />
+<br />
+<br />
+　　　　　　先看看持续和集成本身的意思：<br />
+<br />
+<br />
+　　　　　　　　持续：就是指日复一日，年复一年不断的做一件事儿。<br />
+<br />
+<br />
+　　　　　　　　集成：是指把一堆分离的东西弄到一块去。<br />
+<br />
+<br />
+　　　　那么回来再看看jenkins中的持续集成：<br />
+<br />
+<br />
+　　　　　　不间断的，自动的，把每天的新东西整合到一起。新东西包括源代码，机器环境、测试代码等等。让这些重复的、繁琐的并且有规律的工作交给机器去做。<br />
+<br />
+<br />
+　　　　说了半天，那么为什么要用到jenkins呢？jenkins最突出的一个功能就是可以关联代码版本库（svn、git等），当版本库有改动时（有人提交了代码，使代码库有变动）。会自动触发jenkins的构建，也就是会自动执行测试用例。当测试用例全部通过了，则表明本次改动没问题。如果测试失败了则表明改动后出了问题，需要查明原因并解决才能再次提交代码到版本库。<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+　　python：<br />
+<br />
+<br />
+　　　　我用python编写测试用例脚本。<br />
+<br />
+<br />
+　　　　其实写测试用例脚本可以用很多语言写，java，c#编译型语言也可以。但是python本身是一个很灵活的脚本语言，书写起来方便快捷。<br />
+<br />
+<br />
+　　　　与其他脚本语言，比如php、ruby、perl等等相比，python语法简洁，书写格式清晰，数据类型使用起来方便顺手，类库丰富，涉及范围涵盖绝大多数领域。<br />
+<br />
+<br />
+　　　　最简单的一点：python写起来很舒服。<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+　　selenium：<br />
+<br />
+<br />
+　　　　做web测试必然需要跟浏览器打交道。那么做web的自动化测试，怎样操作浏览器呢？这就需要使用selenium了。<br />
+<br />
+<br />
+　　　　selenium又是什么呢？selenium提供了很多类、方法等，使脚本可以通过其提供的方法，模拟真实用户操作浏览器。<br />
+<br />
+<br />
+　　　　　　selenium到现在为止大体经过了两个阶段，也算是两个版本。<br />
+<br />
+<br />
+　　　　在selenium1.0阶段，selenium是通过js操作页面上的全部动作，由于是通过调用js来操作的，所以有很大的局限性。<br />
+<br />
+<br />
+　　　　　　例如无法做出拖拽动作、对系统弹窗也没办法操作，因为js只能操作页面元素。<br />
+<br />
+<br />
+　　　　在selenium2.0阶段，selenium和webdriver整合到了一起。<br />
+<br />
+<br />
+　　　　　　有了webdriver，selenium从两方面有了改进，一方面selenium不再使用js操作浏览器了，而是通过不同浏览器厂商提供的大部分页面操作的接口来操作页面元素。<br />
+<br />
+<br />
+　　　　　　另一方面webdriver可以与系统底层交互，直接发送动作信号。例如按下什么键、鼠标移动到哪里等。可见selenium2.0比1.0强大很多。<br />
+<br />
+<br />
+　　这里简单说说webdriver：<br />
+<br />
+<br />
+　　　　webdriver我的理解：<br />
+<br />
+<br />
+　　　　　　他算是一个API，一个规范。<br />
+<br />
+<br />
+　　　　　　各种不同的浏览器厂商参照这份规范，给出selenium调用自家浏览器的接口。<br />
+<br />
+<br />
+　　　　　　然后各种编程语言也是参照这份规范，给出语言自身的、可以操作不同浏览器的类库。<br />
+<br />
+<br />
+　　　　　　例如我要用python写测试脚本，要通过python脚本，打开Firefox浏览器，进行一些列页面操作。<br />
+<br />
+<br />
+　　　　　　这个过程能得以实现，是因为：python有一个叫做selenium的外部类库，selenium类库里面又有针对不同浏览器而实现的不同的浏览器包。<br />
+<br />
+<br />
+　　　　　　这样我就可以通过导入selenium类库，再调用selenium类库里面的Firefox包来打开浏览器、填写表单、点击按钮了。<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+好了，第一阶段先到这里，随着一点点完善“框架”，博客也会不断更新。后续贴上一些图片加深理解。<br /></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=43"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

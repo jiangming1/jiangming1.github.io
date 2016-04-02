@@ -1,0 +1,182 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="　：s/vivian/sky/ 替换当前行第一个 vivian 为 sky&nbsp;　&nbsp;　　：s/vivian/sky/g 替换当前行所有 vivian 为 sky&nbsp;　&nbsp;　　：n，$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>vim 编辑 替换-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>vim 编辑 替换</h1> 
+    <h3>时间: 2016-03-22 17:08:47 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content">　：s/vivian/sky/ 替换当前行第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：s/vivian/sky/g 替换当前行所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：n，$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：n，$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　n 为数字，若 n 为 .，表示从当前行开始到最后一行&nbsp;<br />
+　&nbsp;<br />
+　　：%s/vivian/sky/（等同于 ：g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：%s/vivian/sky/g（等同于 ：g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符&nbsp;<br />
+　&nbsp;<br />
+　　：s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/&nbsp;<br />
+　&nbsp;<br />
+　　：%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/&nbsp;<br />
+　&nbsp;<br />
+　　1.：s/vivian/sky/ 替换当前行第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：s/vivian/sky/g 替换当前行所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　2. ：n，$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：n，$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　（n 为数字，若 n 为 .，表示从当前行开始到最后一行）&nbsp;<br />
+　&nbsp;<br />
+　　3. ：%s/vivian/sky/（等同于 ：g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　：%s/vivian/sky/g（等同于 ：g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky&nbsp;<br />
+　&nbsp;<br />
+　　4. 可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符&nbsp;<br />
+　&nbsp;<br />
+　　：s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/&nbsp;<br />
+　&nbsp;<br />
+　　5. 删除文本中的^M&nbsp;<br />
+　&nbsp;<br />
+　　问题描述：对于换行，window下用回车换行（0A0D）来表示，linux下是回车（0A）来表示。这样，将window上的文件拷到unix上用时，总会有个^M.请写个用在unix下的过滤windows文件的换行符（0D）的shell或c程序。&nbsp;<br />
+　&nbsp;<br />
+　　。 使用命令：cat filename1 | tr -d “^V^M” &gt; newfile；&nbsp;<br />
+　&nbsp;<br />
+　　。 使用命令：sed -e “s/^V^M//” filename &gt; outputfilename.需要注意的是在1、2两种方法中，^V和^M指的是Ctrl+V和Ctrl+M.你必须要手工进行输入，而不是粘贴。&nbsp;<br />
+　&nbsp;<br />
+　　。 在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：%s/^V^M//.&nbsp;<br />
+　&nbsp;<br />
+　　。 ：%s/^M$//g&nbsp;<br />
+　&nbsp;<br />
+　　如果上述方法无用，则正确的解决办法是： [Page]<br />
+　&nbsp;<br />
+　　。 tr -d \"\\r\" &lt; src &gt;dest&nbsp;<br />
+　&nbsp;<br />
+　　。 tr -d \"\\015\" dest&nbsp;<br />
+　&nbsp;<br />
+　　。 strings A&gt;B&nbsp;<br />
+&nbsp; &nbsp; &nbsp; 6. 替换确认<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;我们有很多时候会需要某个字符(串)在文章中某些位置出现时被替换，而其它位置不被替换的有选择的操作，这就需要用户来进行确认，vi的查找替换同样支持<br />
+&nbsp; &nbsp; &nbsp; &nbsp;例如<br />
+&nbsp; &nbsp; &nbsp; ：s/vivian/sky/g 替换当前行所有 vivian 为 sky&nbsp;<br />
+&nbsp; &nbsp; &nbsp; 在命令后面加上一个字母c就可以实现，即：s/vivian/sky/gc<br />
+&nbsp; &nbsp; &nbsp; 顾名思意，c是confirm的缩写<br />
+　&nbsp;<br />
+　　7. 其它&nbsp;<br />
+　&nbsp;<br />
+　　利用 ：s 命令可以实现字符串的替换。具体的用法包括：&nbsp;<br />
+　&nbsp;<br />
+　　：s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1&nbsp;<br />
+　&nbsp;<br />
+　　：s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1&nbsp;<br />
+　&nbsp;<br />
+　　：。，$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1&nbsp;<br />
+　&nbsp;<br />
+　　：1，$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1&nbsp;<br />
+　&nbsp;<br />
+　　：g/str1/s//str2/g 功能同上&nbsp;<br />
+　&nbsp;<br />
+　　从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换；不加 g，表示只对搜索&nbsp;<br />
+　&nbsp;<br />
+　　字符串的首次出现进行替换；g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作<br /></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=47"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

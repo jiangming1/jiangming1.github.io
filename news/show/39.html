@@ -1,0 +1,555 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="今天，总结一下selenium怎么操作web页面常见的元素。主要有：上传alter dialogprompt dialogconfirm dialogselect listradio boxinput boxcheckBox测试页面如下：&nbsp;View Codeselenium 最核心的技巧是WebElement..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>今天，总结一下selenium怎么操作web页面常见的元素。-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>今天，总结一下selenium怎么操作web页面常见的元素。</h1> 
+    <h3>时间: 2016-03-21 13:21:27 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content">今天，总结一下selenium怎么操作web页面常见的元素。<br />
+<br />
+<br />
+主要有：<br />
+<br />
+<br />
+上传<br />
+alter dialog<br />
+prompt dialog<br />
+confirm dialog<br />
+select list<br />
+radio box<br />
+input box<br />
+checkBox<br />
+测试页面如下：<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+&nbsp;View Code<br />
+selenium 最核心的技巧是WebElement的识别和定位<br />
+<br />
+<br />
+selenium总共有八种定位方法&nbsp;<br />
+<br />
+<br />
+&nbsp;By.id() &nbsp;通过id定位<br />
+&nbsp;By.name() &nbsp;通过name 定位<br />
+&nbsp;By.xpath() 通过xpath定位<br />
+&nbsp;By.className() 通过className定位<br />
+&nbsp;By.cssSelector() 通过CSS 定位<br />
+&nbsp;By.linkText() 通过linkText<br />
+&nbsp;By.tagName() 通过tagName<br />
+&nbsp;By.partialLinkText() 通过匹到的部分linkText<br />
+目前，使用比较多的是cssSelector和xpath，因为一个页面中Id name className tagName LinkText等比较容易重复 不容易 确定唯一<br />
+<br />
+<br />
+接下来会有具体的例子来演示如何定位　 &nbsp;<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+上传文件<br />
+<br />
+<br />
+一般，上传页面如果是input，像这样的，可以使用sendkeys<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+首先，这里使用xpath定位到该元素，然后使用sendKeys即可，sendKeys send你要上传的文件的绝对路径<br />
+<br />
+<br />
+1 //td/input[@type='file']<br />
+也可以使用cssSelector，关于xpath和cssSelector更多知识，以后会做一些专题<br />
+<br />
+<br />
+1 td&gt;input[type='file']<br />
+如何验证你写的xptah/cssSelector是正确的呢？<br />
+<br />
+<br />
+有以下几种方法：<br />
+<br />
+<br />
+F12 ,使用浏览器的console &nbsp;，xpath使用$x() &nbsp;function，css使用 &nbsp; &nbsp;$() function &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+使用第三方插件firebug<br />
+使用selenium IDE<br />
+&nbsp;<br />
+<br />
+<br />
+alert对话框<br />
+<br />
+<br />
+&nbsp;细分三种，Alert，prompt，confirm<br />
+<br />
+<br />
+&nbsp;Selenium有以下方法：<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+&nbsp;Alert alert =driver.switchTo().alert();<br />
+&nbsp;<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; 1. driver.switchTo().alert(); &nbsp;获取alert<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; 2. alert.accept(); 点确定<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; 3. alert.dismiss(); 点取消<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; 4. alert.getText();获取alert的内容<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+&nbsp; &nbsp;&nbsp;<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+select菜单<br />
+<br />
+<br />
+&nbsp; &nbsp; select也是比较常见的，selenium封装了以下方法<br />
+<br />
+<br />
+&nbsp; &nbsp; 创建select<br />
+<br />
+<br />
+&nbsp; &nbsp;<br />
+<br />
+<br />
+WebElement selector = driver.findElement(By.id("Selector"));<br />
+Select select = new Select(selector);<br />
+&nbsp; &nbsp;<br />
+<br />
+<br />
+选择select的option有以下三种方法<br />
+<br />
+<br />
+selectByIndex(int index) 通过index<br />
+selectByVisibleText(String text) 通过匹配到的可见字符<br />
+selectByValue(String value) 通过匹配到标签里的value<br />
+WebElement selector = driver.findElement(By.id("Selector"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Select select = new Select(selector);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByIndex(3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByVisibleText("桃子");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByValue("apple");<br />
+输入框<br />
+<br />
+<br />
+输入框就比较简单了，不再多说<br />
+<br />
+<br />
+sendKeys()输入内容<br />
+<br />
+<br />
+clear() &nbsp;清空<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+单选框（RadioBox）<br />
+<br />
+<br />
+单选框可以有获取状态，是否被选中<br />
+<br />
+<br />
+radioBox.isSelected();<br />
+是否enable<br />
+<br />
+<br />
+radioBox.isEnabled()<br />
+使用click方法选中<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+复选框（checkBox）<br />
+<br />
+<br />
+复选框和单选框基本差不多，此处略<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+超链接<br />
+<br />
+<br />
+超链接比较常见，一般都是标签a<br />
+<br />
+<br />
+&lt;a href="http://www.cnblogs.com/tobecrazy/" &gt;Copyright 2015 to be crazy &lt;/a&gt;<br />
+一般使用click方法<br />
+<br />
+<br />
+这里我们了解一下浏览器打开超链接时，如果是chrome，点超链接的同时按下Ctrl会打开新标签，按下shift会打开新窗口<br />
+<br />
+<br />
+这里单讲一下不同窗口切换.<br />
+<br />
+<br />
+selenium有两个关于获取窗口的方法：<br />
+<br />
+<br />
+1. driver.getWindowHandle(); &nbsp;返回的是字符串，获取当前窗口的句柄<br />
+<br />
+<br />
+2. driver.getWindowHandles(); 返回的是 Set&lt;String&gt; ，获取所有窗口<br />
+<br />
+<br />
+如果你想在窗口之间切换<br />
+<br />
+<br />
+driver.switchTo().window(window);<br />
+小技巧： 如何滚动到你定位的元素<br />
+<br />
+<br />
+这里使用java script<br />
+<br />
+<br />
+// scroll to mylink<br />
+&nbsp; &nbsp; &nbsp; &nbsp; JavascriptExecutor scroll = (JavascriptExecutor) driver;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; scroll.executeScript("arguments[0].scrollIntoView();", myLink);<br />
+&nbsp;<br />
+<br />
+<br />
+接下来是所有测试代码：<br />
+<br />
+<br />
+复制代码<br />
+package com.packt.webdriver.chapter1;<br />
+<br />
+<br />
+import java.util.List;<br />
+import java.util.Set;<br />
+import java.util.concurrent.TimeUnit;<br />
+<br />
+<br />
+import org.openqa.selenium.Alert;<br />
+import org.openqa.selenium.By;<br />
+import org.openqa.selenium.JavascriptExecutor;<br />
+import org.openqa.selenium.Keys;<br />
+import org.openqa.selenium.WebDriver;<br />
+import org.openqa.selenium.WebElement;<br />
+import org.openqa.selenium.interactions.Actions;<br />
+import org.openqa.selenium.support.ui.Select;<br />
+import org.testng.Assert;<br />
+<br />
+<br />
+import com.packt.webdriver.chapter3.DriverFactory;<br />
+<br />
+<br />
+/**<br />
+&nbsp;* this method is for deal with base web elements<br />
+&nbsp;*&nbsp;<br />
+&nbsp;* @author Young<br />
+&nbsp;*<br />
+&nbsp;*/<br />
+public class dealWithElements {<br />
+<br />
+<br />
+&nbsp; &nbsp; public static void main(String[] args) throws Exception {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; String URL = "file://demo.html";<br />
+&nbsp; &nbsp; &nbsp; &nbsp; String chromdriver="E:\\chromedriver.exe";<br />
+&nbsp; &nbsp; &nbsp; &nbsp; System.setProperty("webdriver.chrome.driver", chromdriver);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ChromeOptions options = new ChromeOptions();<br />
+// &nbsp; &nbsp; &nbsp; &nbsp;options.addExtensions(new File(""));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; DesiredCapabilities capabilities = DesiredCapabilities.chrome();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; capabilities.setCapability("chrome.switches",<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Arrays.asList("--start-maximized"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; options.addArguments("--test-type", "--start-maximized");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebDriver driver=new ChromeDriver(options);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; driver.get(URL);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // max size the browser<br />
+&nbsp; &nbsp; &nbsp; &nbsp; driver.manage().window().maximize();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement upload = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//td/input[@type='file']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; upload.sendKeys("C:/Users/Young/Desktop/demo.html");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(upload.getAttribute("value").contains("demo"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for alert<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement clickOnAlert = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//td/input[@name='alterbutton']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; clickOnAlert.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // get alert<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert alert = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(alert.getText().contains("alert"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // click alert ok<br />
+&nbsp; &nbsp; &nbsp; &nbsp; alert.accept();<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for prompt<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement clickOnPrompt = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//td/input[@name='promptbutton']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; clickOnPrompt.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert prompt = driver.switchTo().alert();<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; prompt.sendKeys("I love Selenium");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; prompt.accept();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(5);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert afterAccept = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(afterAccept.getText().contains("I love Selenium"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // click alert ok<br />
+&nbsp; &nbsp; &nbsp; &nbsp; afterAccept.accept();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for confirm<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement clickOnConfirm = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//td/input[@name='confirmbutton']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; clickOnConfirm.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert confirm = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; confirm.dismiss();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert afterDismiss = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(afterDismiss.getText().contains("You pressed Cancel"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; afterDismiss.accept();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement selector = driver.findElement(By.id("Selector"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Select select = new Select(selector);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByIndex(3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByVisibleText("桃子");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; select.selectByValue("apple");<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; System.out.println(select.getAllSelectedOptions().toString());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement showSelectResult = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .name("showSelectResult"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; showSelectResult.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert yourSelect = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(yourSelect.getText().contains("苹果"));<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; yourSelect.accept();<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // input box<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement editBox = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//td/input[@id='edit']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; editBox.sendKeys("Selenium is good");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement submitButton = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//input[@type='button' and @name='submit']"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; submitButton.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Alert submitAlert = driver.switchTo().alert();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertEquals(submitAlert.getText(), "Selenium is good");<br />
+&nbsp; &nbsp; &nbsp; &nbsp; submitAlert.accept();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for radio Box<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement duRadioBox = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .cssSelector("div#radio&gt;input.Baidu"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement aLiRadioBox = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .cssSelector("div#radio&gt;input.Alibaba"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement TXRadioBox = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .cssSelector("div#radio&gt;input.Tencent"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement MiRadioBox = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .cssSelector("div#radio&gt;input.Mi"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(TXRadioBox.isSelected());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(!MiRadioBox.isEnabled());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; duRadioBox.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(duRadioBox.isSelected());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; aLiRadioBox.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(aLiRadioBox.isSelected());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for checkBox<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; List&lt;WebElement&gt; webCheckBox = driver.findElements(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .xpath("//input[@type='checkbox']"));<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; for (WebElement e : webCheckBox) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e.click();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(e.isSelected());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // for links<br />
+&nbsp; &nbsp; &nbsp; &nbsp; String defaultWindow = driver.getWindowHandle();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; WebElement myLink = driver.findElement(By<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .linkText("Copyright 2015 to be crazy"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // scroll to mylink<br />
+&nbsp; &nbsp; &nbsp; &nbsp; JavascriptExecutor scroll = (JavascriptExecutor) driver;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; scroll.executeScript("arguments[0].scrollIntoView();", myLink);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; // open link in a new windows press shift when you click<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Actions actions = new Actions(driver);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; actions.keyDown(Keys.SHIFT).click(myLink).perform();<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Set&lt;String&gt; currentWindows = driver.getWindowHandles();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; System.out.println(currentWindows.size());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; for (String window : currentWindows) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (!window.endsWith(defaultWindow)) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; driver = driver.switchTo().window(window);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; driver.manage().timeouts()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .pageLoadTimeout(60, TimeUnit.SECONDS);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; Assert.assertTrue(driver.getCurrentUrl().contains("tobecrazy"));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; delay(10);<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; driver.quit();<br />
+&nbsp; &nbsp; }<br />
+<br />
+<br />
+&nbsp; &nbsp; /**<br />
+&nbsp; &nbsp; &nbsp;* @author Young<br />
+&nbsp; &nbsp; &nbsp;* @param seconds<br />
+&nbsp; &nbsp; &nbsp;*/<br />
+&nbsp; &nbsp; public static void delay(int seconds) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; try {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Thread.sleep(seconds * 1000);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; } catch (InterruptedException e) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // TODO Auto-generated catch block<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e.printStackTrace();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; }<br />
+}<br />
+复制代码<br /></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=39"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

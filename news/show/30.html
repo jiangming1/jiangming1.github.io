@@ -1,0 +1,461 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="1. &nbsp; &nbsp; 什么是正则表达式正则表达式（ regular expression ）就是用一个“字符串”来描述一个特征，然后去验证另一个“字符串”是否符合这个特征。比如 表达式“ ab+ ” 描述的特征是“一个 \'a\' 和 任意个..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>正则表达式的应用-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>正则表达式的应用</h1> 
+    <h3>时间: 2014-08-20 17:14:29 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content"><br />
+1. &nbsp; &nbsp; 什么是正则表达式<br />
+<br />
+<br />
+正则表达式（ regular expression ）就是用一个“字符串”来描述一个特征，然后去验证另一个“字符串”是否符合这个特征。比如 表达式“ ab+ ” 描述的特征是“一个 'a' 和 任意个 'b' ”，那么 'ab', 'abb', 'abbbbbbbbbb' 都符合这个特征。<br />
+<br />
+<br />
+正则表达式可以用来：<br />
+（ 1 ）验证字符串是否符合指定特征，比如验证是否是合法的邮件地址。<br />
+（ 2 ）用来查找字符串，从一个长的文本中查找符合指定特征的字符串，比查找固定字符串更加灵活方便。<br />
+（ 3 ）用来替换，比普通的替换更强大。<br />
+2. &nbsp; &nbsp; 正则表达式规则<br />
+<br />
+<br />
+2.1. &nbsp; &nbsp; 普通字符<br />
+<br />
+<br />
+字母、数字、汉字、下划线、以及后边章节中没有特殊定义的标点符号，都是 " 普通字符 " 。表达式中的普通字符，在匹配一个字符串的时候，匹配与之相同的一个字符。<br />
+<br />
+<br />
+&nbsp; 举例 1 ：表达式 "c" ，在匹配字符串 "abcde" 时，匹配结果是：成功；匹配到的内容是： "c" ；匹配到的位置是：开始于 2 ，结束于 3 。（注：下标从 0 开始还是从 1 开始，因当前编程语言的不同而可能不同）<br />
+<br />
+<br />
+&nbsp; 举例 2 ：表达式 "bcd" ，在匹配字符串 "abcde" 时，匹配结果是：成功；匹配到的内容是： "bcd" ；匹配到的位置是：开始于 1 ，结束于 4 。<br />
+<br />
+<br />
+2.2. &nbsp; &nbsp; 简单的转义字符<br />
+<br />
+<br />
+一些不便书写的字符，采用在前面加 "\" 的方法。<br />
+<br />
+<br />
+表达式 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+可匹配<br />
+<br />
+<br />
+\r, \n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+代表回车和换行符<br />
+<br />
+<br />
+\t<br />
+<br />
+<br />
+制表符<br />
+<br />
+<br />
+\\<br />
+<br />
+<br />
+代表 "\" 本身<br />
+<br />
+<br />
+&nbsp; 还有其他一些在后边章节中有特殊用处的标点符号，在前面加 "\" 后，就代表该符号本身。比如： ^, $ 都有特殊意义，如果要想匹配字符串中 "^" 和 "$" 字符，则表达式就需要写成 "\^" 和 "\$" 。<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+可匹配<br />
+<br />
+<br />
+\^<br />
+<br />
+<br />
+匹配 ^ 符号本身<br />
+<br />
+<br />
+\$<br />
+<br />
+<br />
+匹配 $ 符号本身<br />
+<br />
+<br />
+\.<br />
+<br />
+<br />
+匹配小数点（ . ）本身<br />
+<br />
+<br />
+这些转义字符的匹配方法与 " 普通字符 " 是类似的。也是匹配与之相同的一个字符。<br />
+<br />
+<br />
+举例 1 ：表达式 "\$d" ，在匹配字符串 "abc$de" 时，匹配结果是：成功；匹配到的内容是： "$d" ；匹配到的位置是：开始于 3 ，结束于 5 。<br />
+<br />
+<br />
+2.3. &nbsp; &nbsp; 能够与 ' 多种字符 ' 匹配的表达式<br />
+<br />
+<br />
+正则表达式中的一些表示方法，可以匹配 ' 多种字符 ' 其中的任意一个字符。比如，表达式 "\d" 可以匹配任意一个数字。虽然可以匹配其中任意字符，但是只能是一个，不是多个。<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+可匹配<br />
+<br />
+<br />
+\d<br />
+<br />
+<br />
+任意一个数字， 0~9 中的任意一个<br />
+<br />
+<br />
+\w<br />
+<br />
+<br />
+任意一个字母或数字或下划线，也就是 A~Z,a~z,0~9,_ 中任意一个<br />
+<br />
+<br />
+\s<br />
+<br />
+<br />
+包括空格、制表符、换页符等空白字符的其中任意一个<br />
+<br />
+<br />
+.<br />
+<br />
+<br />
+小数点可以匹配除了换行符（ \n ）以外的任意一个字符<br />
+<br />
+<br />
+举例 1 ：表达式 "\d\d" ，在匹配 "abc123" 时，匹配的结果是：成功；匹配到的内容是： "12" ；匹配到的位置是：开始于 3 ，结束于 5 。<br />
+<br />
+<br />
+举例 2 ：表达式 "a.\d" ，在匹配 "aaa100" 时，匹配的结果是：成功；匹配到的内容是： "aa1" ；匹配到的位置是：开始于 1 ，结束于 4 。<br />
+<br />
+<br />
+2.4. &nbsp; &nbsp; 自定义能够匹配 ' 多种字符 ' 的表达式<br />
+<br />
+<br />
+使用方括号 [ ] 包含一系列字符，能够匹配其中任意一个字符。用 [^ ] 包含一系列字符，则能够匹配其中字符之外的任意一个字符。同样的道理，虽然可以匹配其中任意一个，但是只能是一个，不是多个。<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+可匹配<br />
+<br />
+<br />
+[ab5@]<br />
+<br />
+<br />
+匹配 "a" 或 "b" 或 "5" 或 "@"<br />
+<br />
+<br />
+[^abc]<br />
+<br />
+<br />
+匹配 "a","b","c" 之外的任意一个字符<br />
+<br />
+<br />
+[f-k]<br />
+<br />
+<br />
+匹配 "f"~"k" 之间的任意一个字母<br />
+<br />
+<br />
+[^A-F0-3]<br />
+<br />
+<br />
+匹配 "A"~"F","0"~"3" 之外的任意一个字符<br />
+<br />
+<br />
+举例 1 ：表达式 "[bcd][bcd]" 匹配 "abc123" 时，匹配的结果是：成功；匹配到的内容是： "bc" ；匹配到的位置是：开始于 1 ，结束于 3 。<br />
+<br />
+<br />
+举例 2 ：表达式 "[^abc]" 匹配 "abc123" 时，匹配的结果是：成功；匹配到的内容是： "1" ；匹配到的位置是：开始于 3 ，结束于 4 。<br />
+<br />
+<br />
+2.5. &nbsp; &nbsp; 修饰匹配次数的特殊符号<br />
+<br />
+<br />
+前面章节中讲到的表达式，无论是只能匹配一种字符的表达式，还是可以匹配多种字符其中任意一个的表达式，都只能匹配一次。如果使用表达式再加上修饰匹配次数的特殊符号，那么不用重复书写表达式就可以重复匹配。<br />
+<br />
+<br />
+使用方法是： " 次数修饰 " 放在 " 被修饰的表达式 " 后边。比如： "[bcd][bcd]" 可以写成 "[bcd]{2}" 。<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+作用<br />
+<br />
+<br />
+{n} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+表达式重复 n 次，比如： &nbsp;"\w{2}" 相当于 "\w\w" ； &nbsp;"a{5}" 相当于 "aaaaa"<br />
+<br />
+<br />
+{m,n} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+表达式至少重复 m 次，最多重复 n 次，比如： &nbsp;"ba{1,3}" 可以匹配 "ba" 或 "baa" 或 "baaa"<br />
+<br />
+<br />
+{m,} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+表达式至少重复 m 次，比如： &nbsp;"\w\d{2,}" 可以匹配 "a12","_456","M12344"...<br />
+<br />
+<br />
+? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+匹配表达式 0 次或者 1 次，相当于 {0,1} ，比如： &nbsp;"a[cd]?" 可以匹配 "a","ac","ad"<br />
+<br />
+<br />
++ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+表达式至少出现 1 次，相当于 {1,} ，比如： &nbsp;"a+b" 可以匹配 "ab","aab","aaab"...<br />
+<br />
+<br />
+* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+<br />
+<br />
+表达式不出现或出现任意次，相当于 {0,} ，比如： &nbsp;"\^*b" 可以匹配 "b","^^^b"...<br />
+<br />
+<br />
+举例 1 ：表达式 "\d+\.?\d*" 在匹配 "It costs $12.5" 时，匹配的结果是：成功；匹配到的内容是： "12.5" ；匹配到的位置是：开始于 10 ，结束于 14 。<br />
+<br />
+<br />
+举例 2 ：表达式 "go{2,8}gle" 在匹配 "Ads by goooooogle" 时，匹配的结果是：成功；匹配到的内容是： "goooooogle" ；匹配到的位置是：开始于 7 ，结束于 17 。<br />
+<br />
+<br />
+2.6. &nbsp; &nbsp; 其他代表抽象意义的特殊符号<br />
+<br />
+<br />
+一些符号在表达式中代表抽象的特殊意义：<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+作用<br />
+<br />
+<br />
+^<br />
+<br />
+<br />
+与字符串开始的地方匹配，不匹配任何字符<br />
+<br />
+<br />
+$<br />
+<br />
+<br />
+与字符串结束的地方匹配，不匹配任何字符<br />
+<br />
+<br />
+\b<br />
+<br />
+<br />
+匹配一个单词边界，也就是单词和空格之间的位置，不匹配任何字符<br />
+<br />
+<br />
+举例 1 ：表达式 "^aaa" 在匹配 "xxx aaa xxx" 时，匹配结果是：失败。因为 "^" 要求与字符串开始的地方匹配，因此，只有当 "aaa" 位于字符串的开头的时候， "^aaa" 才能匹配， &nbsp;比如： "aaa xxx xxx" 。<br />
+<br />
+<br />
+举例 2 ：表达式 "aaa$" 在匹配 "xxx aaa xxx" 时，匹配结果是：失败。因为 "$" 要求与字符串结束的地方匹配，因此，只有当 "aaa" 位于字符串的结尾的时候， "aaa$" 才能匹配， &nbsp;比如： "xxx xxx aaa" 。<br />
+<br />
+<br />
+举例 3 ：表达式 ".\b." 在匹配 "@@@abc" 时，匹配结果是：成功；匹配到的内容是： "@a" ；匹配到的位置是：开始于 2 ，结束于 4 。<br />
+<br />
+<br />
+进一步说明： "\b" 与 "^" 和 "$" 类似，本身不匹配任何字符，但是它要求它在匹配结果中所处位置的左右两边，其中一边是 "\w" 范围，另一边是 非 "\w" 的范围。<br />
+<br />
+<br />
+举例 4 ：表达式 "\bend\b" 在匹配 "weekend,endfor,end" 时，匹配结果是：成功；匹配到的内容是： "end" ；匹配到的位置是：开始于 15 ，结束于 18 。<br />
+<br />
+<br />
+一些符号可以影响表达式内部的子表达式之间的关系：<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+作用<br />
+<br />
+<br />
+|<br />
+<br />
+<br />
+左右两边表达式之间 " 或 " 关系，匹配左边或者右边<br />
+<br />
+<br />
+( )<br />
+<br />
+<br />
+(1). 在被修饰匹配次数的时候，括号中的表达式可以作为整体被修饰<br />
+<br />
+<br />
+(2). 取匹配结果的时候，括号中的表达式匹配到的内容可以被单独得到<br />
+<br />
+<br />
+&nbsp;<br />
+<br />
+<br />
+举例 5 ：表达式 "Tom|Jack" 在匹配字符串 "I'm Tom, he is Jack" 时，匹配结果是：成功；匹配到的内容是： "Tom" ；匹配到的位置是：开始于 4 ，结束于 7 。匹配下一个时，匹配结果是：成功；匹配到的内容是： "Jack" ；匹配到的位置时：开始于 15 ，结束于 19 。<br />
+<br />
+<br />
+举例 6 ：表达式 "(go\s*)+" 在匹配 "Let's go go go!" 时，匹配结果是：成功；匹配到内容是： "go go go" ；匹配到的位置是：开始于 6 ，结束于 14 。<br />
+<br />
+<br />
+举例 7 ：表达式 " ￥ (\d+\.?\d*)" 在匹配 " ＄ 10.9, ￥ 20.5" 时，匹配的结果是：成功；匹配到的内容是： " ￥ 20.5" ；匹配到的位置是：开始于 6 ，结束于 10 。单独获取括号范围匹配到的内容是： "20.5" 。<br />
+<br />
+<br />
+2.7. &nbsp; &nbsp; 字符大小写与贪婪模式<br />
+<br />
+<br />
+正则表达式一般来说是区分大小写的，对于字符串 ” AAAbcdddd ” , 使用正则表达式 ” aaa\w+ ” 是无法匹配，但有时候需要不区分大小写匹配，例如在匹配数据库表名时。可以在组前添加特殊的非捕捉构造 (?) 实现 , 在上例中使用正则表达式 ” (?i)aaa\w+ ” 就可以匹配字符串 ” AAAbcdddd ” 。<br />
+<br />
+<br />
+当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配尽可能多的字符。对于正则表达式 ” a.*b ” ，它将会匹配最长的以 a 开始，以 b 结束的字符串。如果用它来搜索 aabab 的话，它会匹配整个字符串 aabab 。这被称为贪婪匹配。有时，我们更需要懒惰匹配，也就是匹配尽可能少的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号 ? 。这样 ” .*? ” 就意味着在能使整个匹配成功的前提下使用最少的重复。 ” a.*?b ” 匹配最短的，以 a 开始，以 b 结束的字符串。如果把它应用于 ” aabab ” 的话，它会匹配 aab （第一到第三个字符）和 ab （第四到第五个字符）。<br />
+<br />
+<br />
+表达式<br />
+<br />
+<br />
+作用<br />
+<br />
+<br />
+*?<br />
+<br />
+<br />
+重复任意次，但尽可能少重复<br />
+<br />
+<br />
++?<br />
+<br />
+<br />
+重复 1 次或更多次，但尽可能少重复<br />
+<br />
+<br />
+??<br />
+<br />
+<br />
+重复 0 次或 1 次，但尽可能少重复<br />
+<br />
+<br />
+{n,m}?<br />
+<br />
+<br />
+重复 n 到 m 次，但尽可能少重复<br />
+<br />
+<br />
+{n,}?<br />
+<br />
+<br />
+重复 n 次以上，但尽可能少重复<br />
+<br />
+<br />
+3. &nbsp; &nbsp; 在 iUAP DI 中正则表达式的使用<br /></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=30"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

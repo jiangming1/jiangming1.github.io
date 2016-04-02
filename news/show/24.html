@@ -1,0 +1,294 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="&nbsp;开发自动化测试有一个好处.就是每次上线可以快速验证代码逻辑是否对全局其他模块是否产生影响.并且比人工测试靠谱的多.不会产生遗漏.我对快捷通的邮箱注册用例写了一段代码快捷通注册分邮箱注册 和手机注册.2..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>自动化测试--快捷通的自动化注册测试-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>自动化测试--快捷通的自动化注册测试</h1> 
+    <h3>时间: 2016-03-16 16:55:32 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content">&nbsp;开发自动化测试有一个好处.就是每次上线可以快速验证代码逻辑是否对全局其他模块是否产生影响.<br />
+并且比人工测试靠谱的多.不会产生遗漏.<br />
+我对快捷通的邮箱注册用例写了一段代码<br />
+<br />
+<br />
+快捷通注册分邮箱注册 和手机注册.<br />
+<br />
+<br />
+2者都可以实现.<br />
+邮箱注册的代码的逻辑和思维步骤.<br />
+<br />
+<br />
+邮箱注册分为3个步骤<br />
+<br />
+<br />
+第一步识别图形验证码<br />
+第二步识别邮件验证码<br />
+第三步注册账号登录密码 支付密码和身份证号码<br />
+<br />
+<br />
+海尔的快捷通有点坑. 软件只支持ie浏览器<br />
+<br />
+<br />
+那么软件的编程步骤如下&nbsp;<br />
+截图<br />
+上传图形验证码<br />
+linux主机识别验证码<br />
+linux主机返回text给主程序<br />
+等待60秒 调用mail收件程序<br />
+<br />
+<br />
+登录到第二步 鼠标定位到ie输入框<br />
+输入密码<br />
+注册成功.<br />
+pymail1.py<br />
+<br />
+<br />
+# -*- coding: utf-8 -*-<br />
+import re<br />
+import poplib<br />
+import email<br />
+from email.parser import Parser<br />
+from email.header import decode_header<br />
+from email.utils import parseaddr<br />
+aaa="all"<br />
+def guess_charset(msg):<br />
+charset = msg.get_charset()<br />
+if charset is None:<br />
+content_type = msg.get('Content-Type', '').lower()<br />
+pos = content_type.find('charset=')<br />
+if pos &gt;= 0:<br />
+charset = content_type[pos + 8:].strip()<br />
+return charset<br />
+<br />
+<br />
+def decode_str(s):<br />
+value, charset = decode_header(s)[0]<br />
+if charset:<br />
+value = value.decode(charset)<br />
+return value<br />
+<br />
+<br />
+def print_info(msg, indent=0):<br />
+global aaa<br />
+if indent == 0:<br />
+for header in ['From', 'To', 'Subject']:<br />
+value = msg.get(header, '')<br />
+if value:<br />
+if header=='Subject':<br />
+value = decode_str(value)<br />
+else:<br />
+hdr, addr = parseaddr(value)<br />
+name = decode_str(hdr)<br />
+value = u'%s &lt;%s&gt;' % (name, addr)<br />
+if (msg.is_multipart()):<br />
+parts = msg.get_payload()<br />
+<br />
+<br />
+for n, part in enumerate(parts):<br />
+print_info(part, indent + 1)<br />
+else:<br />
+content_type = msg.get_content_type()<br />
+if content_type=='text/plain' or content_type=='text/html':<br />
+content = msg.get_payload(decode=True)<br />
+charset = guess_charset(msg)<br />
+if charset:<br />
+content = content.decode(charset)<br />
+aaa=content<br />
+<br />
+<br />
+email = "test@caiwuhao.com"#raw_input('Email: ')<br />
+password ="123456"# raw_input('Password: ')<br />
+pop3_server ="pop.caiwuhao.com"# raw_input('POP3 server: ')<br />
+server = poplib.POP3(pop3_server)<br />
+#server.set_debuglevel(1)<br />
+# 认证:<br />
+server.user(email)<br />
+server.pass_(password)<br />
+resp, mails, octets = server.list()<br />
+# 获取最新一封邮件, 注意索引号从1开始:<br />
+resp, lines, octets = server.retr(len(mails))<br />
+# 解析邮件:<br />
+msg = Parser().parsestr('\r\n'.join(lines))<br />
+# 打印邮件内容:<br />
+print_info(msg)<br />
+# 慎重:将直接从服务器删除邮件:<br />
+# server.dele(len(mails))<br />
+# 关闭连接:<br />
+server.quit()<br />
+ine = "尊敬的test@caiwuhao.com用户您好：&lt;p&gt; 您的注册验证码为rB1G，校验码有效期为24小时，请尽快登录快捷通账户完成注册操作。&lt;br&gt;&lt;br&gt;此邮件为系统邮件，请勿直接回复。如有疑问，请拨打4006110909&gt;，或访问快捷通官网：www.kjtpay.com. 【快捷通】&lt;/p&gt;"<br />
+<br />
+<br />
+matchObj = re.match( r'.*(\w\w\w\w).*?24', aaa, re.M|re.I)<br />
+if matchObj:<br />
+print matchObj.group(1)<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+kjtpay.py<br />
+<br />
+<br />
+<br />
+<br />
+# coding: UTF-8<br />
+#作者 蒋明<br />
+#作用kjt登录刷新缓存<br />
+#日期 2016-03-09<br />
+from selenium import webdriver<br />
+import time<br />
+import os<br />
+from pyvirtualdisplay import Display<br />
+#display = Display(visible=0, size=(1280, 768))<br />
+#display.start()<br />
+runtag='fj052_mag_prod_build_20160308.1'<br />
+a='2016-3-9 02:00:00'<br />
+a_struck_time=time.strptime(a,'%Y-%m-%d %H:%M:%S')<br />
+print time.mktime(a_struck_time)<br />
+print time.time()<br />
+runtime=time.mktime(a_struck_time)<br />
+while runtime&gt;time.time():<br />
+time.sleep(6)<br />
+print "wait"<br />
+driver=webdriver.Firefox()<br />
+driver.get("https://www.kjtpay.com/register/person/email/active.htm")<br />
+driver.find_element_by_id("username2").send_keys("test@caiwuhao.com")<br />
+driver.find_element_by_id("yzm2").send_keys("yzm2")<br />
+out=False<br />
+while out==False:<br />
+driver.find_element_by_class_name("yzm_img").click()<br />
+time.sleep(1)<br />
+driver.get_screenshot_as_file('/google.png')<br />
+#自动效验验证码<br />
+cmd ="cd /"<br />
+os.system(cmd)<br />
+cmd ="convert /google.png -crop 61x20+403+315 /google1.png"<br />
+os.system(cmd)<br />
+cmd ="tesseract /google1.png /result"<br />
+os.system(cmd)<br />
+f = open("/result.txt", "r")<br />
+line = f.readline()<br />
+f.close()<br />
+print len(line)<br />
+print driver.find_element_by_class_name("row_tip").text<br />
+if len(line)==5:<br />
+out=True<br />
+break<br />
+line=line[:4]<br />
+driver.find_element_by_id("yzm2").send_keys(line)<br />
+<br />
+<br />
+driver.find_element_by_id("btn_mfhq2").click()<br />
+cmd ="python /mymail1.py&gt;/mail.txt"<br />
+os.system(cmd)<br />
+<br />
+<br />
+time.sleep(30)<br />
+f = open("/mail.txt", "r")<br />
+line = f.readline()<br />
+f.close()<br />
+driver.implicitly_wait(30)<br />
+driver.find_element_by_id("jym2").send_keys(line)<br />
+#driver.find_element_by_id("btn_submit2").click()<br />
+<br />
+<br />
+#driver.quit()<br />
+#display.stop()<br />
+<br />
+<br /></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=24"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="快捷通自动化验证时需要接收短信验证码这个时候就该我们andriod工程师出厂了.好歹我也学过andriod开发.好不说话了翠花 上酸菜.自动测试测试短信验证码思路如下.在测试员接收短信的手机上安装短信拦截器apk. 收到带6..." />
+	<meta name="Copyright" content="Copyright (c) 2015" />
+	<meta name="author" content="财务狗--Powered by yourphp">
+	<meta name="generator" content="Yourphp 2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>自动过短信验证码-博客-财务狗</title>
+	<link href="/index.php?m=Format&a=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+	<script src="/Public/Js/jquery.min.js"></script>
+	<script src="/Public/Js/responsiveslides.min.js"></script>
+	<script src="/Public/Js/slide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Yourphp/Tpl/Home/Default/Public/css/lrtk.css" /> 
+</head>
+<body>
+<div class="head_b">
+	<div class="main">
+		<div class="head_r">
+
+        	<div class="head_s">
+           	  <ul class="head_s_i"><input name="" id="key" onkeydown="SearchNew2(event)" type="text" /></ul>
+              <input class="head_s_b" onclick="Search()" type="button" style="border:none;"/>
+            </div>
+        </div>
+    <div class="nav1">
+            <div class="logo"><a href="index.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/logo.png"/></a></div>
+            <div class="nav_b">
+		<div id="nav" class="nav">
+		<ul id="nav_box"><li id="nav_0"><span class="fl_ico"></span><a href="/" title="网站首页"><span class="fl">网站首页</span></a></li><li id="nav_33" class="first file"><span class="fl_ico"></span><a href="/list-33.html" title="关于我们"><span class="fl">关于我们</span></a></li><li id="nav_35" class="foot file"><span class="fl_ico"></span><a href="/news/" title="博客"><span class="fl">博客</span></a></li></ul>
+		</div>
+      </div>
+	</div>
+    </div>
+ 
+</div>
+<script type="text/javascript">
+var APP	 =	 '';
+var ROOT =	 '';
+var PUBLIC = '/Public';
+yourphpnav.init({navid: "nav"});
+var nav = document.getElementById('nav_32');nav.className=nav.className+" on";
+</script>
+<div class="warp"><div id="main">
+<div class="c"></div>
+
+<div class="ny_banner3"></div>
+	<div class="banner_bjt"></div>
+<div class="mains">
+		<div class="ny_widht clearfix">
+		
+<div class="ny_right right">
+	<div class="title_wz"><b></b><span>当前位置： <a href="/">网站首页</a> &gt <a href="/list-32.html">时代旅行社</a> &gt; <a href="/news/">博客</a></span></div>
+	<div class="about">
+	<h1>自动过短信验证码</h1> 
+    <h3>时间: 2016-03-21 10:31:23 &nbsp;&nbsp;&nbsp;&nbsp;来源: 财务狗</h3>
+    <span class="content"><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">快捷通自动化验证时需要接收短信验证码<br />
+这个时候就该我们andriod工程师出厂了.好歹我也学过andriod开发.<br />
+好不说话了翠花 上酸菜.<br />
+<br />
+自动测试测试短信验证码思路如下.<br />
+在测试员接收短信的手机上安装短信拦截器apk. 收到带6位数字短信后会自己转发给php程序写的网关.<br />
+<br />
+php程序接收到短信验证码后就把他存入数据库.供自动化验证程序查询.<br />
+自动化验证程序每隔30秒去网页取值如果取到6位数字就填入短信验证框.<br />
+<br />
+程序开发不是你说会就会.需要你每日的积累.学的越多你会的就越多.在公司里你就能证明自己<br />
+<br />
+附件为<br />
+AndroidMainfest.xml #android权限申请xml<br />
+SmsReceiver.java #短信拦截器<br />
+MainActivity.java #主窗口<br />
+index.php &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #服务器上存储短信验证码<br />
+kjtfindpasswd.py #重置密码的测试主程序<br />
+MainActivity.java<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">package&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">com.example.aaaa;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.support.v7.app.ActionBarActivity;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.os.Bundle;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.view.Menu;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.view.MenuItem;</span><br />
+<br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">public class&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">MainActivity&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">extends&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">ActionBarActivity</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&nbsp;{</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;">@Override<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">protected void&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">onCreate(Bundle savedInstanceState) {</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">super</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">.onCreate(savedInstanceState);</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">setContentView(R.layout.</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;font-style:italic;background-color:#FFFFFF;">activity_main</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">);</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}</span><br />
+<br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;">@Override<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">public boolean&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">onCreateOptionsMenu(Menu menu) {</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;">// Inflate the menu; this adds items to the action bar if it is present.<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">getMenuInflater().inflate(R.menu.</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;font-style:italic;background-color:#FFFFFF;">main</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">, menu);</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">return true</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;">@Override<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808000;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">public boolean&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">onOptionsItemSelected(MenuItem item) {</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;">// Handle action bar item clicks here. The action bar will<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;">// automatically handle clicks on the Home/Up button, so long<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;">// as you specify a parent activity in AndroidManifest.xml.<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">int&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">id = item.getItemId();</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">if&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">(id == R.id.</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;font-style:italic;background-color:#FFFFFF;">action_settings</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">) {</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">return true</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">return super</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">.onOptionsItemSelected(item);</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">AndroidMainfest.xml<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;font-style:italic;background-color:#FFFFFF;">&lt;?</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">xml version=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"1.0"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">encoding=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"utf-8"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;font-style:italic;background-color:#FFFFFF;">?&gt;<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">manifest&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">xmlns:</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"<a href="http://schemas.android.com/apk/res/android" target="_blank">http://schemas.android.com/apk/res/android</a>"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">package=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"com.example.aaaa"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:versionCode=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"1"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:versionName=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"1.0"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-sdk<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:minSdkVersion=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"8"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:targetSdkVersion=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"22"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">/&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.VIBRATE"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.INTERNET"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.SEND_SMS"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.READ_PHONE_STATE"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.ACCESS_NETWORK_STATE"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.RECEIVE_SMS"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">/&gt;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">uses-permission&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.permission.PROCESS_OUTGOING_CALLS"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">/&gt;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">application<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:allowBackup=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"true"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:icon=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"@drawable/ic_launcher"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">label</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"@string/app_name"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:theme=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"@style/AppTheme"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">activity<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">".MainActivity"<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">label</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"@string/app_name"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">intent-filter</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">action&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.intent.action.MAIN"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">/&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">category&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#660E7A;font-weight:bold;background-color:#FFFFFF;">android</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#0000FF;font-weight:bold;background-color:#FFFFFF;">:name=</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"android.intent.category.LAUNCHER"&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">/&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">intent-filter</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">activity</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">application</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&lt;/</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">manifest</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">&gt;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">SmsReceiver.java<br />
+<br />
+<br />
+package&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">com.example.aaaa;&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.text.SimpleDateFormat;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.content.BroadcastReceiver;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.content.Context;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.content.Intent;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.os.Bundle;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.telephony.SmsManager;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">android.telephony.SmsMessage;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.net.URL;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.net.URLConnection;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.io.BufferedReader;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.io.BufferedWriter;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.io.InputStreamReader;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">import&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">java.io.OutputStreamWriter;&nbsp;</span><br />
+<br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">public class&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">SmsReceiver&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">extends&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">BroadcastReceiver {&nbsp;</span><br />
+<br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">@Override&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">public void&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">onReceive(Context context, Intent intent) {&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">System.out.println(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"��������������,�����ҳɹ���...."</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">Bundle bundle = intent.getExtras();&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">Object[] objects = (Object[]) bundle.get(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"pdus"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">for</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">(Object obj : objects){&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">SmsMessage smsMessage = SmsMessage.createFromPdu((</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">byte</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">[])obj);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">String body = smsMessage.getDisplayMessageBody();&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">String address = smsMessage.getDisplayOriginatingAddress();&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">long&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">date = smsMessage.getTimestampMillis();&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">SimpleDateFormat format =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">SimpleDateFormat(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"yyyy-MM-dd hh:mm:ss"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">String dateStr = format.format(date);&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">System.out.println(address +</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">" �� "&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">+ dateStr +&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"���㷢����������: "&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">+ body);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">String response_string =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">""</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">boolean&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">out =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">true</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">boolean&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">in =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">true</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">try&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">{&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">URL url =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">URL(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"<a href="http://888.caiwuhao.com/?a=" target="_blank">http://888.caiwuhao.com/?a=</a>"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">+body);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">URLConnection connection = url.openConnection();&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">connection.setDoInput(in);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">connection.setDoOutput(out);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">BufferedWriter writer =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">null</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">if</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">(out){&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">writer =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">BufferedWriter(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">OutputStreamWriter(connection.getOutputStream()));&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">writer.write(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"I am clent request!!"</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">);&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">writer.flush();&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">BufferedReader reader =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">null</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">;&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">if</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">(in){&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">reader =&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">BufferedReader(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">new&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">InputStreamReader(connection.getInputStream()));&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">response_string = reader.readLine();</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">System.out.println(</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#008000;font-weight:bold;background-color:#FFFFFF;">"response: "</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">+response_string);&nbsp;</span><br />
+<br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#000080;font-weight:bold;background-color:#FFFFFF;">catch&nbsp;</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">(Exception e) {&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;">// TODO: handle exception&nbsp;<br />
+</span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;color:#808080;font-style:italic;background-color:#FFFFFF;"></span><span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">System.out.println(e.getMessage());&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">}&nbsp;</span><br />
+<br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">888.caiwuhao.com/index.php</span><br />
+<span style="font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">服务器段保存短信的php程序</span><br />
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	&lt;?php
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$a=$_REQUEST["a"];
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$a=$_POST['a'];
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	if ($a&gt;"") {
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	echo $a;
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	&nbsp; &nbsp; &nbsp; &nbsp; $open=fopen("/alidata/www/888/a/<span style="color:#008000;font-weight:bold;">findsmspassword.txt</span>","w" );
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	&nbsp; &nbsp; &nbsp; &nbsp; fwrite($open,$a);
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	&nbsp; &nbsp; &nbsp; &nbsp; fclose($open);
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	}
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	<br />
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$fh = fopen("/alidata/www/888/a/<span style="color:#008000;font-weight:bold;">findsmspassword.txt</span>", 'r');
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$theData = fgets($fh);
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	fclose($fh);
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	<br />
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$regex = '/\d\d\d\d\d\d/';
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	$matches = array();
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	preg_match($regex, $theData, $matches);
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	<br />
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	echo $theData;
+</div>
+<div style="margin:0px;padding:0px;font-family:punctuation, 微软雅黑, Tohoma;font-size:14px;background-color:#FFFFFF;">
+	?&gt;<br />
+<span><br />
+<br />
+自动化验证短信的主程序<br />
+</span><span>kjtpaysmsfindpassword.py</span><br />
+<br />
+<br />
+<span style="color:#808080;font-style:italic;"># coding: UTF-8<br />
+</span><span style="color:#808080;font-style:italic;">#作者 蒋明<br />
+</span><span style="color:#808080;font-style:italic;">#作用kjt短信找回登录密码<br />
+</span><span style="color:#808080;font-style:italic;">#日期 2016-03-17<br />
+</span><span style="color:#000080;font-weight:bold;">from&nbsp;</span><span>selenium&nbsp;</span><span style="color:#000080;font-weight:bold;">import&nbsp;</span><span>webdriver</span><br />
+<span style="color:#000080;font-weight:bold;">import&nbsp;</span><span>time</span><br />
+<span style="color:#000080;font-weight:bold;">import&nbsp;</span><span>os</span><br />
+<span style="color:#000080;font-weight:bold;">from&nbsp;</span><span>pyvirtualdisplay&nbsp;</span><span style="color:#000080;font-weight:bold;">import&nbsp;</span><span>Display</span><br />
+<span style="color:#808080;font-style:italic;">#display = Display(visible=0, size=(1280, 768))<br />
+</span><span style="color:#808080;font-style:italic;">#display.start()<br />
+</span><span>runtag=</span><span style="color:#008000;font-weight:bold;">'fj052_mag_prod_build_20160308.1'<br />
+</span><span>a=</span><span style="color:#008000;font-weight:bold;">'2016-3-9 02:00:00'<br />
+</span><span>a_struck_time=time.strptime(a,</span><span style="color:#008000;font-weight:bold;">'%Y-%m-%d %H:%M:%S'</span><span>)</span><br />
+<span style="color:#000080;font-weight:bold;">print&nbsp;</span><span>time.mktime(a_struck_time)</span><br />
+<span style="color:#000080;font-weight:bold;">print&nbsp;</span><span>time.time()</span><br />
+<span>runtime=time.mktime(a_struck_time)</span><br />
+<span style="color:#000080;font-weight:bold;">while&nbsp;</span><span>runtime&gt;time.time():</span><br />
+<span>time.sleep(</span><span style="color:#0000FF;">6</span><span>)</span><br />
+<span style="color:#000080;font-weight:bold;">print&nbsp;</span><span style="color:#008000;font-weight:bold;">"wait"<br />
+</span><span>driver=webdriver.Firefox()</span><br />
+<span>driver.get(</span><span style="color:#008000;font-weight:bold;">"<a href="https://www.kjtpay.com/register/person/email/active.htm" target="_blank">https://www.kjtpay.com/register/person/findpassword.htm</a>"</span><span>)</span><br />
+<span>driver.find_element_by_id(</span><span style="color:#008000;font-weight:bold;">"username2"</span><span>).send_keys(</span><span style="color:#008000;font-weight:bold;">"test@caiwuhao.com"</span><span>)</span><br />
+<span>driver.find_element_by_id(</span><span style="color:#008000;font-weight:bold;">"yzm2"</span><span>).send_keys(</span><span style="color:#008000;font-weight:bold;">"yzm2"</span><span>)</span><br />
+<span>out=False</span><br />
+<span style="color:#000080;font-weight:bold;">while&nbsp;</span><span>out==False:</span><br />
+<span>driver.find_element_by_class_name(</span><span style="color:#008000;font-weight:bold;">"yzm_img"</span><span>).click()</span><br />
+<span>time.sleep(</span><span style="color:#0000FF;">1</span><span>)</span><br />
+<span>driver.get_screenshot_as_file(</span><span style="color:#008000;font-weight:bold;">'/google.png'</span><span>)</span><br />
+<span style="color:#808080;font-style:italic;">#自动效验验证码<br />
+</span><span style="color:#808080;font-style:italic;"></span><span>cmd =</span><span style="color:#008000;font-weight:bold;">"cd /"<br />
+</span><span style="color:#008000;font-weight:bold;"></span><span>os.system(cmd)</span><br />
+<span>cmd =</span><span style="color:#008000;font-weight:bold;">"convert /google.png -crop 61x20+403+315 /google1.png"<br />
+</span><span style="color:#008000;font-weight:bold;"></span><span>os.system(cmd)</span><br />
+<span>cmd =</span><span style="color:#008000;font-weight:bold;">"tesseract /google1.png /result"<br />
+</span><span style="color:#008000;font-weight:bold;"></span><span>os.system(cmd)</span><br />
+<span>f = open(</span><span style="color:#008000;font-weight:bold;">"/result.txt"</span><span>,&nbsp;</span><span style="color:#008000;font-weight:bold;">"r"</span><span>)</span><br />
+<span>line = f.readline()</span><br />
+<span>f.close()</span><br />
+<span style="color:#000080;font-weight:bold;">print&nbsp;</span><span>len(line)</span><br />
+<span style="color:#000080;font-weight:bold;">print&nbsp;</span><span>driver.find_element_by_class_name(</span><span style="color:#008000;font-weight:bold;">"row_tip"</span><span>).text</span><br />
+<span style="color:#000080;font-weight:bold;">if&nbsp;</span><span>len(line)==</span><span style="color:#0000FF;">5</span><span>:</span><br />
+<span>out=True</span><br />
+<span style="color:#000080;font-weight:bold;">break<br />
+</span><span>line=line[:</span><span style="color:#0000FF;">4</span><span>]</span><br />
+<span>driver.find_element_by_id(</span><span style="color:#008000;font-weight:bold;">"yzm2"</span><span>).send_keys(line)</span><br />
+<br />
+<span>driver.find_element_by_id(</span><span style="color:#008000;font-weight:bold;">"btn_mfhq2"</span><span>).click()</span><br />
+<span>cmd =</span><span style="color:#008000;font-weight:bold;">"python /mymail1.py&gt;/mail.txt"<br />
+</span><span>os.system(cmd)</span><br />
+#找到sms短信验证码.然后填入验证框.再点击下一步<br />
+<span>time.sleep(</span><span style="color:#0000FF;">30</span><span>)</span><br />
+<span>f = open(</span><span style="color:#008000;font-weight:bold;">"<span style="color:#000000;font-family:Arial;font-weight:normal;">/alidata/www/888/a/</span>findsmspassword.txt"</span><span>,&nbsp;</span><span style="color:#008000;font-weight:bold;">"r"</span><span>)</span><br />
+<span>line = f.readline()</span><br />
+<span>f.close()</span><br />
+<span>driver.implicitly_wait(</span><span style="color:#0000FF;">30</span><span>)</span><br />
+<span>driver.find_element_by_id(</span><span style="color:#008000;font-weight:bold;">"jym2"</span><span>).send_keys(line)</span><br />
+<span style="color:#808080;font-style:italic;">#driver.find_element_by_id("btn_submit2").click()<br />
+</span><span style="color:#808080;font-style:italic;"><br />
+</span><span style="color:#808080;font-style:italic;">#driver.quit()<br />
+</span><span style="color:#808080;font-style:italic;">#display.stop()</span><span>&nbsp;</span>
+</div></span>           
+	
+	<div id="pages" class="page"></div>
+		</div>
+</div> 
+<script language="JavaScript" src="/index.php?m=Article&a=hits&id=31"></script>
+		<div class="ny_left left">
+				<h1><a href="about.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/title1.gif" alt="关于東井" /></a></h1>
+				<div class="ny_nav">
+				<ul>
+
+		    <li><a href="/list-33.html">关于我们</a></li>
+		<li><a href="/news/">博客</a></li>
+						</ul>
+				</div>
+				<div class="latest_news">
+				<h2><span class="left">最新动态</span><span class="right"><a href="new.html">+</a></span></h2>
+
+		<ul>
+		<a href="/news/show/53.html" target="_blank">iOS 自动化测试代码</a><p><a href="/news/show/52.html" target="_blank">自动化测试--htmlunit无界面测试</a><p><a href="/news/show/51.html" target="_blank">linux 下的配置管理命令</a><p><a href="/news/show/50.html" target="_blank">logical查看 system.out.print</a><p><a href="/news/show/49.html" target="_blank">android实现监听短信的代码</a><p><a href="/news/show/48.html" target="_blank">shell 并行执行脚本</a><p><a href="/news/show/47.html" target="_blank">vim 编辑 替换</a><p><a href="/news/show/46.html" target="_blank">windows7 x86自动安装应答文件</a><p><a href="/news/show/45.html" target="_blank">win7 64位自动装机应答文件Autounatte...</a><p><a href="/news/show/44.html" target="_blank">win7 文件共享</a><p> 
+		</ul>
+
+				</div>
+				<div class="contact_img"><a href="contact.html"><img src="/Yourphp/Tpl/Home/Default/Public/images/contact_img.jpg"></a></div>
+			</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+<br>
+
+</div></div>
+
+<div class="footer">
+	<div class="main">
+        <div class="footer_k1" style="color:#fff;">Copyleft ,复制请说明出处 </div>
+    </div>
+</div>
+
+<script>showon('.catlist ul li.folder','span.fd_ico','35');</script>
+</body>
+</html>
